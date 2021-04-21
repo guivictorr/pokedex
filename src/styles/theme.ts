@@ -17,7 +17,7 @@ export default {
     xlarge: '3.6rem',
     large: '2.4rem',
     xmedium: '1.8rem',
-    medium: '1,6rem',
+    medium: '1.6rem',
     small: '1.4rem',
     xsmall: '1.2rem',
     xxsmall: '0.8rem',
