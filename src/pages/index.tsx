@@ -1,45 +1,25 @@
-import { FormEvent } from 'react';
-import { useRouter } from 'next/router';
-import * as L from '../styles/pages/login';
+import { GetServerSideProps } from 'next';
+import { isUuid } from 'uuidv4';
 
-import Input from '../components/Input';
-import Wrapper from '../components/Wrapper/styles';
-import Heading from '../components/Heading/styles';
-import Button from '../components/Button';
-import { useAuth } from '../hooks/useAuth';
+export const getServerSideProps: GetServerSideProps = async ctx => {
+  const { token } = ctx.req.cookies;
 
-export default function Login() {
-  const { signIn, token } = useAuth();
-  const { push } = useRouter();
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    signIn();
-    push('/dashboard');
-  };
-
-  if (token) {
-    push('/dashboard');
+  if (!isUuid(token)) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
   }
 
-  return (
-    <L.Container>
-      <Wrapper maxWidth={120}>
-        <L.Content>
-          <header>
-            <img src="logo.svg" alt="Pokémon" />
-          </header>
-          <Heading level={1} fontSize="xlarge">
-            Comece a coletar <br />
-            pokémons!
-          </Heading>
-          <form onSubmit={handleSubmit}>
-            <Input placeholder="Email" type="email" required />
-            <Input placeholder="Senha" type="password" isPassword required />
-            <Button title="Entrar" type="submit" />
-          </form>
-        </L.Content>
-      </Wrapper>
-    </L.Container>
-  );
-}
+  return {
+    props: {},
+  };
+};
+
+const DashBoard = () => {
+  return <h1>DashBoard</h1>;
+};
+
+export default DashBoard;
