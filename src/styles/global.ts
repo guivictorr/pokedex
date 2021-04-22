@@ -7,6 +7,10 @@ const Global = createGlobalStyle`
     box-sizing: border-box;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   body {
     background-color: ${({ theme }) => theme.colors.white};
     font-family: 'Poppins', sans-serif;
