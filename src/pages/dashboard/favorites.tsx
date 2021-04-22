@@ -25,7 +25,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   };
 };
 
-const DashBoard = () => {
+const Favorites = () => {
   return (
     <F.Container>
       <Header />
@@ -47,4 +47,4 @@ const DashBoard = () => {
   );
 };
 
-export default DashBoard;
+export default Favorites;

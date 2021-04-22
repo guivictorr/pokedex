@@ -26,7 +26,7 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
   };
 };
 
-const DashBoard = () => {
+const Search = () => {
   const [pokemon, setPokemon] = useState<PokemonProps>();
   const [inputText, setInputText] = useState('');
   const [error, setError] = useState('');
@@ -38,6 +38,7 @@ const DashBoard = () => {
   const searchOnKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       getData(inputText);
+      setInputText('');
     }
   };
 
@@ -58,6 +59,7 @@ const DashBoard = () => {
 
       setPokemon(data);
       setError('');
+      setInputText('');
     } catch (err) {
       setError('Não encontrei esse pokémon');
     }
@@ -98,4 +100,4 @@ const DashBoard = () => {
   );
 };
 
-export default DashBoard;
+export default Search;

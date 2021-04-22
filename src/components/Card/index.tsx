@@ -2,6 +2,7 @@ import * as C from './styles';
 import Button from '../Button';
 import Heading from '../Heading/styles';
 import Type from '../Type/styles';
+import { useFavorites } from '../../hooks/useFavorites';
 import { useState } from 'react';
 
 type CardProps = {
@@ -12,7 +13,13 @@ type CardProps = {
 };
 
 const Card = ({ id, image, name, type }: CardProps) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { checkIsFavorite, addFavorite } = useFavorites();
+  const [isFavorite, setIsFavorite] = useState(checkIsFavorite(id));
+
+  const addFavoritePokemon = () => {
+    addFavorite(id);
+    setIsFavorite(!isFavorite);
+  };
 
   return (
     <C.Container>
@@ -26,9 +33,9 @@ const Card = ({ id, image, name, type }: CardProps) => {
           <Type>{type}</Type>
         </div>
         <Button title="Ver detalhes" />
-        <button onClick={() => setIsFavorite(!isFavorite)}>
+        <button onClick={addFavoritePokemon}>
           <img
-            src={isFavorite ? '/heart.svg' : '/heart-outline.svg'}
+            src={checkIsFavorite(id) ? '/heart.svg' : '/heart-outline.svg'}
             alt="Favoritar"
           />
         </button>

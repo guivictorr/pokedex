@@ -55,7 +55,7 @@ export const Content = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 2px solid ${({ theme }) => theme.colors.grey400};
+    border: 1px solid ${({ theme }) => theme.colors.grey400};
     font-size: ${({ theme }) => theme.fontSizes.xsmall};
     border-radius: 8px;
     background: transparent;
