@@ -21,7 +21,7 @@ const Container = styled.button<ButtonStyleProps>`
     outlined
       ? css`
           background: transparent;
-          border: 2px solid ${theme.colors.grey300};
+          border: 1px solid ${theme.colors.grey300};
           color: ${theme.colors.grey300};
         `
       : css`

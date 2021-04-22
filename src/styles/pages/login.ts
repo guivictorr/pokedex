@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
-  background: url('/background.jpg') no-repeat;
+  background: url('/background.png') no-repeat;
   background-position: 100%;
   background-size: contain;
 `;

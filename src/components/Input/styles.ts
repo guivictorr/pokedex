@@ -8,9 +8,10 @@ export const Container = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.grey300};
   border-radius: 8px;
   padding: 18px 26px;
-  background: ${({ theme }) => theme.colors.white};
+  background: transparent;
 
   input {
+    background: transparent;
     flex: 1;
     border: none;
     outline: none;

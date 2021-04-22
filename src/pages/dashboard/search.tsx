@@ -1,8 +1,9 @@
 import { GetServerSideProps } from 'next';
 import { isUuid } from 'uuidv4';
 import Header from '../../components/Header';
+import Wrapper from '../../components/Wrapper/styles';
 
-import * as D from '../../styles/pages/dashboard';
+import * as S from '../../styles/pages/search';
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
   const { token } = ctx.req.cookies;
@@ -23,10 +24,19 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 
 const DashBoard = () => {
   return (
-    <D.Container>
+    <S.Container>
       <Header />
-      <h1>search</h1>
-    </D.Container>
+      <Wrapper maxWidth={100}>
+        <S.Content>
+          <div>
+            <input type="text" placeholder="Procure por pokémons" />
+            <button>
+              <img src="/search.svg" alt="Procurar" />
+            </button>
+          </div>
+        </S.Content>
+      </Wrapper>
+    </S.Container>
   );
 };
 
