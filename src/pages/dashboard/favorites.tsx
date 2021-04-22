@@ -32,7 +32,7 @@ const DashBoard = () => {
       <Wrapper maxWidth={120}>
         <F.Content>
           <img src="/empty.svg" alt="Empty space" />
-          <Heading fontWeight={600} fontSize="large" color="grey500">
+          <Heading level={2} fontWeight={600} fontSize="large" color="grey500">
             Está meio vazio por aqui!
           </Heading>
           <p>

@@ -4,7 +4,7 @@ export const Container = styled.div``;
 export const Content = styled.main`
   width: 100%;
 
-  div {
+  & > div {
     margin-top: 30px;
     width: 100%;
     display: flex;
@@ -40,5 +40,12 @@ export const Content = styled.main`
       border: none;
       cursor: pointer;
     }
+  }
+
+  section {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+    gap: 35px;
   }
 `;
