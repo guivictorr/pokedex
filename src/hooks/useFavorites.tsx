@@ -1,31 +1,33 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
+import { CardProps } from '../components/Card';
 
 type FavoritesProviderProps = {
   children: ReactNode;
 };
 
 type FavoritesContextProps = {
-  addFavorite(id: number): void;
-  checkIsFavorite(id: number): boolean;
+  addFavorite(pokemon: CardProps): void;
+  checkIsFavorite(pokemon: CardProps): boolean;
   checkIsEmpty(): boolean;
+  favorites: CardProps[];
 };
 
 const FavoritesContext = createContext({} as FavoritesContextProps);
 
 const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
-  const [favorites, setIsFavorites] = useState<number[]>([]);
+  const [favorites, setIsFavorites] = useState<CardProps[]>([]);
 
-  const addFavorite = (id: number) => {
-    if (!checkIsFavorite(id)) {
-      setIsFavorites([...favorites, id]);
+  const addFavorite = (pokemon: CardProps) => {
+    if (!checkIsFavorite(pokemon)) {
+      setIsFavorites([...favorites, pokemon]);
     } else {
-      const index = favorites.findIndex(pokemonId => pokemonId === id);
+      const index = favorites.findIndex(favorite => favorite.id === pokemon.id);
       favorites.splice(index, 1);
     }
   };
 
-  const checkIsFavorite = (id: number) => {
-    return favorites.includes(id);
+  const checkIsFavorite = (pokemon: CardProps) => {
+    return favorites.some(favorite => favorite.id === pokemon.id);
   };
 
   const checkIsEmpty = () => {
@@ -34,7 +36,7 @@ const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
 
   return (
     <FavoritesContext.Provider
-      value={{ addFavorite, checkIsFavorite, checkIsEmpty }}
+      value={{ addFavorite, checkIsFavorite, checkIsEmpty, favorites }}
     >
       {children}
     </FavoritesContext.Provider>

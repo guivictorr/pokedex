@@ -3,6 +3,7 @@ import { useState, ChangeEvent, KeyboardEvent } from 'react';
 import { isUuid } from 'uuidv4';
 import PokemonProps from '../../@types/pokemon';
 import Card from '../../components/Card';
+import Grid from '../../components/Grid/styles';
 import Header from '../../components/Header';
 import Wrapper from '../../components/Wrapper/styles';
 
@@ -84,7 +85,7 @@ const Search = () => {
           </div>
           {error && <p>{error}</p>}
 
-          <section>
+          <Grid columns={4}>
             {pokemon && (
               <Card
                 id={pokemon.id}
@@ -93,7 +94,7 @@ const Search = () => {
                 type={pokemon.types[0].type.name}
               />
             )}
-          </section>
+          </Grid>
         </S.Content>
       </Wrapper>
     </S.Container>

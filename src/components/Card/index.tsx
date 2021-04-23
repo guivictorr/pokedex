@@ -5,21 +5,24 @@ import Type from '../Type/styles';
 import { useFavorites } from '../../hooks/useFavorites';
 import { useState } from 'react';
 
-type CardProps = {
+export type CardProps = {
   name: string;
   image: string;
   id: number;
   type: string;
 };
 
-const Card = ({ id, image, name, type }: CardProps) => {
+const Card = (pokemon: CardProps) => {
+  const { id, image, name, type } = pokemon;
   const { checkIsFavorite, addFavorite } = useFavorites();
-  const [isFavorite, setIsFavorite] = useState(checkIsFavorite(id));
+  const [isFavorite, setIsFavorite] = useState(checkIsFavorite(pokemon));
 
   const addFavoritePokemon = () => {
-    addFavorite(id);
+    addFavorite(pokemon);
     setIsFavorite(!isFavorite);
   };
+
+  console.log(checkIsFavorite(pokemon));
 
   return (
     <C.Container>
@@ -35,7 +38,7 @@ const Card = ({ id, image, name, type }: CardProps) => {
         <Button title="Ver detalhes" />
         <button onClick={addFavoritePokemon}>
           <img
-            src={checkIsFavorite(id) ? '/heart.svg' : '/heart-outline.svg'}
+            src={checkIsFavorite(pokemon) ? '/heart.svg' : '/heart-outline.svg'}
             alt="Favoritar"
           />
         </button>
