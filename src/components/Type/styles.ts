@@ -1,6 +1,11 @@
+import { PaletteColors } from 'react-palette';
 import styled from 'styled-components';
 
-const Type = styled.div`
+type TypeProps = {
+  backgroundColor: keyof PaletteColors | undefined;
+};
+
+const Type = styled.span<TypeProps>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -9,8 +14,9 @@ const Type = styled.div`
   padding: 0 10px;
   height: 20px;
   font-weight: 500;
-  background: ${({ theme }) => theme.colors.grey200};
+  background: ${({ backgroundColor = 'white' }) => backgroundColor};
   color: black;
+  margin: 15px 0;
 `;
 
 export default Type;
