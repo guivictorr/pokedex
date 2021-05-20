@@ -23,6 +23,7 @@ const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
     } else {
       const index = favorites.findIndex(favorite => favorite.id === pokemon.id);
       favorites.splice(index, 1);
+      setIsFavorites([...favorites]);
     }
   };
 
