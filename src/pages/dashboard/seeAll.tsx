@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 import { isUuid } from 'uuidv4';
-import Header from '../../components/Header';
+import Layout from '../../components/Layout';
 
 import * as D from '../../styles/pages/dashboard';
 
@@ -23,10 +23,11 @@ export const getServerSideProps: GetServerSideProps = async ctx => {
 
 const DashBoard = () => {
   return (
-    <D.Container>
-      <Header />
-      <h1>seeAll</h1>
-    </D.Container>
+    <Layout>
+      <D.Container>
+        <h1>seeAll</h1>
+      </D.Container>
+    </Layout>
   );
 };
 

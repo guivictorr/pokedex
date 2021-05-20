@@ -3,8 +3,9 @@ import { useState, ChangeEvent, KeyboardEvent } from 'react';
 import { isUuid } from 'uuidv4';
 import PokemonProps from '../../@types/pokemon';
 import Card from '../../components/Card';
+import Error from '../../components/Error/styles';
 import Grid from '../../components/Grid/styles';
-import Header from '../../components/Header';
+import Layout from '../../components/Layout';
 import Wrapper from '../../components/Wrapper/styles';
 
 import * as S from '../../styles/pages/search';
@@ -37,10 +38,7 @@ const Search = () => {
   };
 
   const searchOnKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      getData(inputText);
-      setInputText('');
-    }
+    if (event.key === 'Enter') getData(inputText);
   };
 
   const getData = async (name?: string) => {
@@ -60,44 +58,46 @@ const Search = () => {
 
       setPokemon(data);
       setError('');
-      setInputText('');
     } catch (err) {
       setError('Não encontrei esse pokémon');
+    } finally {
+      setInputText('');
     }
   };
 
   return (
-    <S.Container>
-      <Header />
-      <Wrapper maxWidth={100}>
-        <S.Content>
-          <div>
-            <input
-              type="text"
-              placeholder="Procure por pokémons"
-              value={inputText}
-              onChange={getInputText}
-              onKeyPress={searchOnKeyPress}
-            />
-            <button onClick={() => getData(inputText)}>
-              <img src="/search.svg" alt="Procurar" />
-            </button>
-          </div>
-          {error && <p>{error}</p>}
-
-          <Grid columns={4}>
-            {pokemon && (
-              <Card
-                id={pokemon.id}
-                name={pokemon.name}
-                image={pokemon.sprites.front_default}
-                type={pokemon.types[0].type.name}
+    <Layout>
+      <S.Container>
+        <Wrapper maxWidth={100}>
+          <S.Content>
+            <div>
+              <input
+                type="text"
+                placeholder="Procure por pokémons"
+                value={inputText}
+                onChange={getInputText}
+                onKeyPress={searchOnKeyPress}
               />
-            )}
-          </Grid>
-        </S.Content>
-      </Wrapper>
-    </S.Container>
+              <button onClick={() => getData(inputText)}>
+                <img src="/search.svg" alt="Procurar" />
+              </button>
+            </div>
+            {error && <Error>{error}</Error>}
+
+            <Grid columns={4}>
+              {pokemon && (
+                <Card
+                  id={pokemon.id}
+                  name={pokemon.name}
+                  image={pokemon.sprites.front_default}
+                  type={pokemon.types[0].type.name}
+                />
+              )}
+            </Grid>
+          </S.Content>
+        </Wrapper>
+      </S.Container>
+    </Layout>
   );
 };
 
