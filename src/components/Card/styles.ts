@@ -22,33 +22,15 @@ export const Content = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  height: 100%;
   position: relative;
 
-  img {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
+  & > div:nth-child(1) {
     align-self: center;
-  }
-
-  span {
-    ${({ theme }) => css`
-      font-size: ${theme.fontSizes.small};
-      color: ${theme.colors.grey300};
-      opacity: 0.7;
-      font-weight: 500;
-    `}
-
-    & + div {
-      margin-top: 8px;
-    }
   }
 
   button {
     height: 32px;
     font-size: ${({ theme }) => theme.fontSizes.xsmall};
-    margin-top: 15px;
 
     &:last-child {
       position: absolute;
