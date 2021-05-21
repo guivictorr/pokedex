@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
 
 type GridProps = {
-  columns: number;
+  columns?: number | string;
+  min?: string;
+  max?: string;
 };
 
 const Grid = styled.section<GridProps>`
@@ -10,8 +12,8 @@ const Grid = styled.section<GridProps>`
   gap: 35px;
   width: 100%;
 
-  ${({ columns }) => css`
-    grid-template-columns: repeat(${columns}, minmax(150px, 1fr));
+  ${({ columns = 'auto-fill', min = '150px', max = '1fr' }) => css`
+    grid-template-columns: repeat(${columns}, minmax(${min}, ${max}));
   `}
 `;
 
