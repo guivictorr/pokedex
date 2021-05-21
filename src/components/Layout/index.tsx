@@ -1,5 +1,4 @@
-import { Container } from 'next/app';
-import { ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 import Header from '../Header';
 
 type LayoutProps = {
@@ -8,10 +7,10 @@ type LayoutProps = {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <Container>
+    <Fragment>
       <Header />
       {children}
-    </Container>
+    </Fragment>
   );
 };
 
