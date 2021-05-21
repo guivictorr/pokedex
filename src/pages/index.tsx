@@ -5,25 +5,6 @@ import Wrapper from '../components/Wrapper/styles';
 import Heading from '../components/Heading/styles';
 import Button from '../components/Button';
 import { useAuth } from '../hooks/useAuth';
-import { GetServerSideProps } from 'next';
-import { isUuid } from 'uuidv4';
-
-export const getServerSideProps: GetServerSideProps = async ctx => {
-  const { token } = ctx.req.cookies;
-
-  if (isUuid(token)) {
-    return {
-      redirect: {
-        destination: '/dashboard/favorites',
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
-};
 
 export default function Login() {
   const { signIn } = useAuth();

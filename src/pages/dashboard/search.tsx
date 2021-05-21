@@ -1,6 +1,4 @@
-import { GetServerSideProps } from 'next';
 import { useState, ChangeEvent, KeyboardEvent } from 'react';
-import { isUuid } from 'uuidv4';
 import PokemonProps from '../../@types/pokemon';
 import Card from '../../components/Card';
 import Error from '../../components/Error/styles';
@@ -10,23 +8,6 @@ import Wrapper from '../../components/Wrapper/styles';
 
 import * as S from '../../styles/pages/search';
 import fetchJson from '../../utils/fetchJson';
-
-export const getServerSideProps: GetServerSideProps = async ctx => {
-  const { token } = ctx.req.cookies;
-
-  if (!isUuid(token)) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    };
-  }
-
-  return {
-    props: {},
-  };
-};
 
 const Search = () => {
   const [pokemon, setPokemon] = useState<PokemonProps>();
