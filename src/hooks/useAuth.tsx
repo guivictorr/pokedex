@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext } from 'react';
+import { useRouter } from 'next/dist/client/router';
 import { uuid } from 'uuidv4';
 import cookie from 'js-cookie';
-import { useRouter } from 'next/dist/client/router';
 
 type AuthProviderProps = {
   children: ReactNode;

@@ -1,9 +1,10 @@
+import { useFavorites } from '../../hooks/useFavorites';
+
 import Card from '../../components/Card';
 import Empty from '../../components/Empty';
 import Grid from '../../components/Grid/styles';
 import Layout from '../../components/Layout';
 import Wrapper from '../../components/Wrapper/styles';
-import { useFavorites } from '../../hooks/useFavorites';
 
 import * as F from '../../styles/pages/favorites';
 

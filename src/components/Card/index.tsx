@@ -1,11 +1,13 @@
-import * as C from './styles';
-import Button from '../Button';
 import Image from 'next/image';
-import Heading from '../Heading/styles';
-import Type from '../Type/styles';
-import { useFavorites } from '../../hooks/useFavorites';
 import { useState } from 'react';
 import { usePalette } from 'react-palette';
+import { useFavorites } from '../../hooks/useFavorites';
+
+import Button from '../Button';
+import Heading from '../Heading/styles';
+import Type from '../Type/styles';
+
+import * as C from './styles';
 
 export type CardProps = {
   name: string;

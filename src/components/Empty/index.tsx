@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import Button from '../Button';
 import Heading from '../Heading/styles';
+
 import { Container } from './styles';
 
 const Empty = () => {

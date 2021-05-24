@@ -1,13 +1,13 @@
 import Layout from '../../components/Layout';
 
-import * as D from '../../styles/pages/dashboard';
+import * as S from '../../styles/pages/seeAll';
 
 const DashBoard = () => {
   return (
     <Layout>
-      <D.Container>
+      <S.Container>
         <h1>seeAll</h1>
-      </D.Container>
+      </S.Container>
     </Layout>
   );
 };

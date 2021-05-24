@@ -1,10 +1,11 @@
-import * as L from '../styles/pages/login';
+import { useAuth } from '../hooks/useAuth';
 
 import Input from '../components/Input';
 import Wrapper from '../components/Wrapper/styles';
 import Heading from '../components/Heading/styles';
 import Button from '../components/Button';
-import { useAuth } from '../hooks/useAuth';
+
+import * as L from '../styles/pages/login';
 
 export default function Login() {
   const { signIn } = useAuth();

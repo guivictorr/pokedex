@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 
 import AuthProvider from '../hooks/useAuth';
 import FavoritesProvider from '../hooks/useFavorites';
+
 import GlobalStyles from '../styles/global';
 import theme from '../styles/theme';
 

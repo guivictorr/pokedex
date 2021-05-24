@@ -1,6 +1,8 @@
 import { useRouter } from 'next/dist/client/router';
 import { useAuth } from '../../hooks/useAuth';
+
 import Link from '../Link';
+
 import * as H from './styles';
 
 const Header = () => {

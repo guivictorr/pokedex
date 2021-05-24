@@ -1,5 +1,7 @@
 import { useState, ChangeEvent, KeyboardEvent } from 'react';
 import PokemonProps from '../../@types/pokemon';
+import fetchJson from '../../utils/fetchJson';
+
 import Card from '../../components/Card';
 import Error from '../../components/Error/styles';
 import Grid from '../../components/Grid/styles';
@@ -7,7 +9,6 @@ import Layout from '../../components/Layout';
 import Wrapper from '../../components/Wrapper/styles';
 
 import * as S from '../../styles/pages/search';
-import fetchJson from '../../utils/fetchJson';
 
 const Search = () => {
   const [pokemon, setPokemon] = useState<PokemonProps>();
