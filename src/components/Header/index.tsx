@@ -1,5 +1,6 @@
 import { useRouter } from 'next/dist/client/router';
 import { useAuth } from '../../hooks/useAuth';
+import { useFavorites } from '../../hooks/useFavorites';
 
 import Link from '../Link';
 
@@ -8,6 +9,7 @@ import * as H from './styles';
 const Header = () => {
   const { signOut } = useAuth();
   const { pathname } = useRouter();
+  const { favorites, checkIsEmpty } = useFavorites();
 
   const pathNames = {
     favorites: '/dashboard/favorites',
@@ -28,7 +30,9 @@ const Header = () => {
               hidden
               defaultChecked={pathname === pathNames.favorites}
             />
-            <label htmlFor="favorites">Favoritos</label>
+            <label htmlFor="favorites">
+              Favoritos {checkIsEmpty() || <span>{favorites.length}</span>}
+            </label>
           </Link>
           <Link href={pathNames.search}>
             <input

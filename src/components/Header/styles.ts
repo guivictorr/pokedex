@@ -24,6 +24,18 @@ export const Content = styled.div`
     display: flex;
     height: 100%;
 
+    a:nth-child(1) > label > span {
+      margin-left: 5px;
+      background-color: black;
+      color: white;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      font-size: ${({ theme }) => theme.fontSizes.xsmall};
+      display: flex;
+      place-content: center;
+    }
+
     label {
       display: flex;
       align-items: center;
