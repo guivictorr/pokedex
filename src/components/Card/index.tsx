@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { usePalette } from 'react-palette';
+import PokemonProps from '../../@types/pokemon';
 import { useFavorites } from '../../hooks/useFavorites';
 
 import Button from '../Button';
@@ -9,19 +10,15 @@ import Type from '../Type/styles';
 
 import * as C from './styles';
 
-export type CardProps = {
-  name: string;
-  image: string;
-  id: number;
-  type: string;
+type CardProps = {
+  pokemon: PokemonProps;
 };
 
-const Card = (pokemon: CardProps) => {
-  const { id, image, name, type } = pokemon;
+const Card = ({ pokemon }: CardProps) => {
   const { checkIsFavorite, addFavorite } = useFavorites();
   const [isFavorite, setIsFavorite] = useState(checkIsFavorite(pokemon));
 
-  const { data } = usePalette(image);
+  const { data } = usePalette(pokemon.sprites.front_default);
 
   const addFavoritePokemon = () => {
     addFavorite(pokemon);
@@ -31,15 +28,22 @@ const Card = (pokemon: CardProps) => {
   return (
     <C.Container>
       <C.Content>
-        <Image width={120} height={120} src={image} alt={name} />
+        <Image
+          width={120}
+          height={120}
+          src={pokemon.sprites.front_default}
+          alt={pokemon.name}
+        />
         <Heading level={1} fontWeight={600} fontSize="large">
-          {name}
+          {pokemon.name}
         </Heading>
         <Heading level={2} fontWeight={500} fontSize="medium" color="grey200">
-          ID: {id}
+          ID: {pokemon.id}
         </Heading>
         <div>
-          <Type backgroundColor={data.lightVibrant}>{type}</Type>
+          <Type backgroundColor={data.lightVibrant}>
+            {pokemon.types[0].type.name}
+          </Type>
         </div>
         <Button title="Ver detalhes" />
         <button onClick={addFavoritePokemon}>

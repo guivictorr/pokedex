@@ -21,13 +21,7 @@ const Favorites = () => {
           ) : (
             <Grid min="200px">
               {favorites.map(favorite => (
-                <Card
-                  id={favorite.id}
-                  image={favorite.image}
-                  name={favorite.name}
-                  type={favorite.type}
-                  key={favorite.id}
-                />
+                <Card pokemon={favorite} key={favorite.id} />
               ))}
             </Grid>
           )}

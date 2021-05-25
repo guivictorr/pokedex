@@ -1,23 +1,23 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
-import { CardProps } from '../components/Card';
+import PokemonProps from '../@types/pokemon';
 
 type FavoritesProviderProps = {
   children: ReactNode;
 };
 
 type FavoritesContextProps = {
-  addFavorite(pokemon: CardProps): void;
-  checkIsFavorite(pokemon: CardProps): boolean;
+  addFavorite(pokemon: PokemonProps): void;
+  checkIsFavorite(pokemon: PokemonProps): boolean;
   checkIsEmpty(): boolean;
-  favorites: CardProps[];
+  favorites: PokemonProps[];
 };
 
 const FavoritesContext = createContext({} as FavoritesContextProps);
 
 const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
-  const [favorites, setIsFavorites] = useState<CardProps[]>([]);
+  const [favorites, setIsFavorites] = useState<PokemonProps[]>([]);
 
-  const addFavorite = (pokemon: CardProps) => {
+  const addFavorite = (pokemon: PokemonProps) => {
     if (!checkIsFavorite(pokemon)) {
       setIsFavorites([...favorites, pokemon]);
     } else {
@@ -27,7 +27,7 @@ const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
     }
   };
 
-  const checkIsFavorite = (pokemon: CardProps) => {
+  const checkIsFavorite = (pokemon: PokemonProps) => {
     return favorites.some(favorite => favorite.id === pokemon.id);
   };
 

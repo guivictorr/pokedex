@@ -66,16 +66,7 @@ const Search = () => {
             </div>
             {error && <Error>{error}</Error>}
 
-            <Grid columns={4}>
-              {pokemon && (
-                <Card
-                  id={pokemon.id}
-                  name={pokemon.name}
-                  image={pokemon.sprites.front_default}
-                  type={pokemon.types[0].type.name}
-                />
-              )}
-            </Grid>
+            <Grid columns={4}>{pokemon && <Card pokemon={pokemon} />}</Grid>
           </S.Content>
         </Wrapper>
       </S.Container>
