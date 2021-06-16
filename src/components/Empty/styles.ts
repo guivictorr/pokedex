@@ -19,6 +19,9 @@ export const Container = styled.section`
   a,
   button {
     max-width: 250px;
+  }
+
+  a {
     margin-top: 40px;
   }
 `;
