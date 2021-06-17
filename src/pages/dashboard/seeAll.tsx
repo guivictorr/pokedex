@@ -18,7 +18,7 @@ type ApiResult = {
 };
 
 const DashBoard = () => {
-  const url = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=200';
+  const url = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=0';
   const [pokemons, setPokemons] = useState<PokemonProps[]>([]);
 
   const getData = useCallback(async () => {
