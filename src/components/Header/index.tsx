@@ -1,5 +1,4 @@
 import { useRouter } from 'next/dist/client/router';
-import { useAuth } from '../../hooks/useAuth';
 import { useFavorites } from '../../hooks/useFavorites';
 
 import Link from '../Link';
@@ -7,7 +6,6 @@ import Link from '../Link';
 import * as H from './styles';
 
 const Header = () => {
-  const { signOut } = useAuth();
   const { pathname } = useRouter();
   const { favorites, checkIsEmpty } = useFavorites();
 
@@ -55,10 +53,6 @@ const Header = () => {
             <label htmlFor="see-all">Ver todos</label>
           </Link>
         </nav>
-        <button onClick={signOut}>
-          Sair
-          <img src="/logout.svg" alt="Sair" />
-        </button>
       </H.Content>
     </H.Container>
   );

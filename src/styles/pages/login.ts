@@ -6,9 +6,26 @@ export const Container = styled.div`
   background: url('/background.png') no-repeat;
   background-position: 100%;
   background-size: contain;
+
+  @media (max-width: 1245px) {
+    background-size: cover;
+  }
+
+  @media (max-width: 500px) {
+    background: none;
+  }
 `;
 
 export const Content = styled.main`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  button {
+    margin-top: 30px;
+    max-width: 35rem;
+  }
+
   header {
     padding-top: 33px;
     img {
@@ -19,18 +36,10 @@ export const Content = styled.main`
 
   h1 {
     margin-top: 80px;
-  }
 
-  form {
-    margin-top: 50px;
-    max-width: 365px;
-
-    div + div {
-      margin-top: 15px;
-    }
-
-    button {
-      margin-top: 33px;
+    @media (max-width: 400px) {
+      text-align: center;
+      font-size: ${({ theme }) => theme.fontSizes.large};
     }
   }
 `;

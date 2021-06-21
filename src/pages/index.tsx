@@ -1,15 +1,11 @@
-import { useAuth } from '../hooks/useAuth';
-
-import Input from '../components/Input';
 import Wrapper from '../components/Wrapper/styles';
 import Heading from '../components/Heading/styles';
 import Button from '../components/Button';
+import Link from '../components/Link';
 
 import * as L from '../styles/pages/login';
 
 export default function Login() {
-  const { signIn } = useAuth();
-
   return (
     <L.Container>
       <Wrapper maxWidth={120}>
@@ -21,11 +17,10 @@ export default function Login() {
             Comece a coletar <br />
             pokémons!
           </Heading>
-          <form onSubmit={signIn}>
-            <Input placeholder="Email" type="email" required />
-            <Input placeholder="Senha" type="password" isPassword required />
+
+          <Link href="dashboard/favorites">
             <Button title="Entrar" type="submit" />
-          </form>
+          </Link>
         </L.Content>
       </Wrapper>
     </L.Container>

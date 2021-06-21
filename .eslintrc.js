@@ -26,6 +26,7 @@ module.exports = {
     },
   },
   rules: {
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/react-in-jsx-scope': 'off',
   },
