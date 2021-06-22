@@ -1,21 +1,31 @@
-<h1 align='center'>Next Boilerplate</h1>
-<p align='center'>Apenas um template para me ajudar a iniciar alguns projetos mais rápido, pretendo atualizar com <b>Testes e Storybook</b></p>
+<h1 align='center'>🐛 Pokedex</h1>
+<p align='center'>Pokedex com funções de favoritar, pesquisar, ver detalhes, ver todos (150). Feito com Next.js</p>
 
 ## 🛠 Tecnologias
 
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+Frontend
 - [ReactJS](https://pt-br.reactjs.org)
 - [Next.js](https://nextjs.org)
 - [Styled Components](styled-components.com/)
-- [NodeJS](https://nodejs.org/)
-- [Typescript](https://typescriptlang.org/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [Typescript](typescriptlang.org/)
 
-## 📱💻 Instruções
+## 💻 Instruções
 
 ```
-## Rodar o comando no seu terminal
-yarn create next-app nomedapasta -e https://github.com/guivictorr/next-boilerplate
-ou
-npx create-next-app nomedapasta -e https://github.com/guivictorr/next-boilerplate
+## 1. Clonar repositório
+git clone https://github.com/guivictorr/pokedex.git
+
+## 2. Entrar na pasta
+cd pokedex
+
+## 3. Instalar as dependências
+yarn
+
+## 4. Rodar a aplicação
+yarn start
 ```
 
 ## 🤔 Como contribuir
@@ -26,4 +36,3 @@ npx create-next-app nomedapasta -e https://github.com/guivictorr/next-boilerplat
 - Faça push para a sua branch: `git push origin minha-feature`.
 
 Depois que o merge da sua pull request for feito, você pode deletar a sua branch.
- 
