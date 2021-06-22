@@ -1,6 +1,6 @@
 import { useState, ChangeEvent, KeyboardEvent } from 'react';
 import PokemonProps from '../../@types/pokemon';
-import fetchJson from '../../utils/fetchJson';
+import { usePokemon } from '../../hooks/usePokemons';
 
 import Card from '../../components/Card';
 import Error from '../../components/Error/styles';
@@ -12,6 +12,7 @@ import * as S from '../../styles/pages/search';
 
 const Search = () => {
   const [pokemon, setPokemon] = useState<PokemonProps>();
+  const { pokemons } = usePokemon();
   const [inputText, setInputText] = useState('');
   const [error, setError] = useState('');
 
@@ -30,15 +31,9 @@ const Search = () => {
         return;
       }
 
-      const data = await fetchJson<PokemonProps>(`
-      https://pokeapi.co/api/v2/pokemon/${name}`);
+      const [filteredPokemon] = pokemons.filter(poke => poke.name === name);
 
-      if (!data) {
-        setError('Não encontrei esse pokémon');
-        return;
-      }
-
-      setPokemon(data);
+      setPokemon(filteredPokemon);
       setError('');
     } catch (err) {
       setError('Não encontrei esse pokémon');

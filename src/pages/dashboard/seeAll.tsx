@@ -1,38 +1,14 @@
-import { useState, useCallback, useEffect } from 'react';
-
-import fetchJson from '../../utils/fetchJson';
-import PokemonProps from '../../@types/pokemon';
+import { usePokemon } from '../../hooks/usePokemons';
 
 import Grid from '../../components/Grid/styles';
 import Layout from '../../components/Layout';
 import Card from '../../components/Card';
-
-import * as S from '../../styles/pages/seeAll';
 import Heading from '../../components/Heading/styles';
 
-type ApiResult = {
-  results: {
-    name: string;
-    url: string;
-  }[];
-};
+import * as S from '../../styles/pages/seeAll';
 
 const DashBoard = () => {
-  const url = 'https://pokeapi.co/api/v2/pokemon?limit=150&offset=0';
-  const [pokemons, setPokemons] = useState<PokemonProps[]>([]);
-
-  const getData = useCallback(async () => {
-    const { results } = await fetchJson<ApiResult>(url);
-
-    for (const result of results) {
-      const pokemon = await fetchJson<PokemonProps>(result.url);
-      setPokemons(prevState => [...prevState, pokemon]);
-    }
-  }, []);
-
-  useEffect(() => {
-    getData();
-  }, [getData]);
+  const { pokemons } = usePokemon();
 
   return (
     <Layout>
