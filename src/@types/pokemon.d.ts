@@ -14,4 +14,11 @@ type PokemonProps = {
   ];
 };
 
+export type PokemonsByLimit = {
+  results: {
+    name: string;
+    url: string;
+  }[];
+};
+
 export default PokemonProps;

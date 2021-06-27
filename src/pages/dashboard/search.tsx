@@ -1,45 +1,23 @@
-import { useState, ChangeEvent, KeyboardEvent } from 'react';
+import { ChangeEvent, useState } from 'react';
 import PokemonProps from '../../@types/pokemon';
-import { usePokemon } from '../../hooks/usePokemons';
-
 import Card from '../../components/Card';
 import Error from '../../components/Error/styles';
 import Grid from '../../components/Grid/styles';
 import Layout from '../../components/Layout';
 import Wrapper from '../../components/Wrapper/styles';
+import useFetch from '../../hooks/useFetch';
 
 import * as S from '../../styles/pages/search';
 
 const Search = () => {
-  const [pokemon, setPokemon] = useState<PokemonProps>();
-  const { pokemons } = usePokemon();
-  const [inputText, setInputText] = useState('');
-  const [error, setError] = useState('');
+  const [inputValue, setInputValue] = useState<string>();
+  const url = `${process.env.NEXT_PUBLIC_API_URL}pokemon/${inputValue}`;
+  const { result: pokemon, loading, error } = useFetch<PokemonProps>(url);
 
-  const getInputText = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputText(event.target.value);
-  };
-
-  const searchOnKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') getData(inputText);
-  };
-
-  const getData = async (name?: string) => {
-    try {
-      if (!inputText) {
-        setError('Você precisa digitar o nome do pokémon');
-        return;
-      }
-
-      const [filteredPokemon] = pokemons.filter(poke => poke.name === name);
-
-      setPokemon(filteredPokemon);
-      setError('');
-    } catch (err) {
-      setError('Não encontrei esse pokémon');
-    } finally {
-      setInputText('');
-    }
+  const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
+    setTimeout(() => {
+      setInputValue(event.target.value);
+    }, 1000);
   };
 
   return (
@@ -51,17 +29,13 @@ const Search = () => {
               <input
                 type="text"
                 placeholder="Procure por pokémons"
-                value={inputText}
-                onChange={getInputText}
-                onKeyPress={searchOnKeyPress}
+                onChange={handleInput}
               />
-              <button onClick={() => getData(inputText)}>
-                <img src="/search.svg" alt="Procurar" />
-              </button>
             </div>
-            {error && <Error>{error}</Error>}
-
-            <Grid columns={4}>{pokemon && <Card pokemon={pokemon} />}</Grid>
+            {error && <Error>Erro ao buscar pokemon</Error>}
+            <Grid columns={4}>
+              {!loading && pokemon && <Card pokemon={pokemon} />}
+            </Grid>
           </S.Content>
         </Wrapper>
       </S.Container>
