@@ -1,19 +1,36 @@
-import { usePokemon } from '../../hooks/usePokemons';
-
 import Grid from '../../components/Grid/styles';
 import Layout from '../../components/Layout';
 import Card from '../../components/Card';
 import Heading from '../../components/Heading/styles';
 
 import * as S from '../../styles/pages/seeAll';
+import useFetch from '../../hooks/useFetch';
+import PokemonProps, { PokemonsByLimit } from '../../@types/pokemon';
+import { useState } from 'react';
+import { useCallback } from 'react';
+import fetchJson from '../../utils/fetchJson';
+import { useEffect } from 'react';
 
 const DashBoard = () => {
-  const { pokemons } = usePokemon();
+  const [pokemons, setPokemons] = useState<PokemonProps[]>([]);
+  const url = `${process.env.NEXT_PUBLIC_API_URL}pokemon?limit=150`;
+  const { result, loading } = useFetch<PokemonsByLimit>(url);
+
+  const handlePokemons = useCallback(async () => {
+    result?.results.map(async item => {
+      const response = await fetchJson<PokemonProps>(item.url);
+      setPokemons(prevState => [...prevState, response]);
+    });
+  }, [result]);
+
+  useEffect(() => {
+    handlePokemons();
+  }, [handlePokemons]);
 
   return (
     <Layout>
       <S.Container>
-        {pokemons.length < 20 ? (
+        {loading ? (
           <S.Content>
             <Heading level={2} color="grey500" fontSize="xlarge">
               Loading {pokemons.length} pokemons...

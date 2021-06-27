@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
-import { usePalette } from 'react-palette';
+import { Palette } from 'react-palette';
 import PokemonProps from '../../@types/pokemon';
 import { useFavorites } from '../../hooks/useFavorites';
 
@@ -16,14 +16,18 @@ type CardProps = {
 
 const Card = ({ pokemon }: CardProps) => {
   const { checkIsFavorite, addFavorite } = useFavorites();
+  const isNotPokemon = Object.keys(pokemon).includes('count');
   const [isFavorite, setIsFavorite] = useState(checkIsFavorite(pokemon));
-
-  const { data } = usePalette(pokemon.sprites.front_default);
 
   const addFavoritePokemon = () => {
     addFavorite(pokemon);
     setIsFavorite(!isFavorite);
   };
+
+  // Gambiarra legal
+  if (isNotPokemon) {
+    return <></>;
+  }
 
   return (
     <C.Container>
@@ -41,9 +45,13 @@ const Card = ({ pokemon }: CardProps) => {
           ID: {pokemon.id}
         </Heading>
         <div>
-          <Type backgroundColor={data.lightVibrant}>
-            {pokemon.types[0].type.name}
-          </Type>
+          <Palette src={pokemon.sprites.front_default}>
+            {({ data }) => (
+              <Type backgroundColor={data.lightVibrant}>
+                {pokemon.types[0].type.name}
+              </Type>
+            )}
+          </Palette>
         </div>
         <Button title="Ver detalhes" />
         <button onClick={addFavoritePokemon}>
