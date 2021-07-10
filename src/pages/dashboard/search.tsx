@@ -5,19 +5,20 @@ import Error from '../../components/Error/styles';
 import Grid from '../../components/Grid/styles';
 import Layout from '../../components/Layout';
 import Wrapper from '../../components/Wrapper/styles';
+import useDebounce from '../../hooks/useDebounce';
 import useFetch from '../../hooks/useFetch';
 
 import * as S from '../../styles/pages/search';
 
 const Search = () => {
-  const [inputValue, setInputValue] = useState<string>();
-  const url = `${process.env.NEXT_PUBLIC_API_URL}pokemon/${inputValue}`;
-  const { result: pokemon, loading, error } = useFetch<PokemonProps>(url);
+  const [inputValue, setInputValue] = useState<string>('');
+  const debouncedValue = useDebounce(inputValue);
+
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/pokemon/${debouncedValue}`;
+  const { result: pokemon, error } = useFetch<PokemonProps>(url);
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setTimeout(() => {
-      setInputValue(event.target.value);
-    }, 1000);
+    setInputValue(event.target.value);
   };
 
   return (
@@ -33,9 +34,7 @@ const Search = () => {
               />
             </div>
             {error && <Error>Erro ao buscar pokemon</Error>}
-            <Grid columns={4}>
-              {!loading && pokemon && <Card pokemon={pokemon} />}
-            </Grid>
+            <Grid columns={4}>{pokemon && <Card pokemon={pokemon} />}</Grid>
           </S.Content>
         </Wrapper>
       </S.Container>
