@@ -18,7 +18,7 @@ export default function Login() {
             pokémons!
           </Heading>
 
-          <Link href="dashboard/favorites">
+          <Link href="/dashboard/favorites">
             <Button title="Entrar" type="submit" />
           </Link>
         </L.Content>
