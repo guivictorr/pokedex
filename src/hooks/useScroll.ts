@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 
 const useScroll = () => {
   const [isPageEnd, setIsPageEnd] = useState(false);
+  const [pageYOffset, setPageYOffset] = useState(0);
 
   useEffect(() => {
     const listener: EventListener = event => {
       const target: HTMLDocument = event.target as HTMLDocument;
       const { scrollTop, scrollHeight } = target.documentElement;
+      setPageYOffset(prevState => prevState + window.pageYOffset);
 
       if (scrollHeight - scrollTop === window.innerHeight) {
         setIsPageEnd(true);
@@ -21,6 +23,7 @@ const useScroll = () => {
 
   return {
     isPageEnd,
+    pageYOffset,
   };
 };
 
