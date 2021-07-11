@@ -8,12 +8,13 @@ import PokemonProps, { PokemonsByLimit } from '../../@types/pokemon';
 import { useState, useEffect } from 'react';
 import { useCallback } from 'react';
 import fetchJson from '../../utils/fetchJson';
+import useScroll from '../../hooks/useScroll';
 
 const DashBoard = () => {
   const [pokemons, setPokemons] = useState<PokemonProps[]>([]);
-  const [isPageEnd, setIsPageEnd] = useState(false);
   const [limit, setLimit] = useState(25);
   const url = `${process.env.NEXT_PUBLIC_API_URL}?limit=150`;
+  const { isPageEnd } = useScroll();
   const { result } = useFetch<PokemonsByLimit>(url);
 
   const handlePokemons = useCallback(async () => {
@@ -28,22 +29,6 @@ const DashBoard = () => {
   useEffect(() => {
     handlePokemons();
   }, [handlePokemons]);
-
-  useEffect(() => {
-    const listener: EventListener = event => {
-      const target: HTMLDocument = event.target as HTMLDocument;
-      const { scrollTop, scrollHeight } = target.documentElement;
-
-      if (scrollHeight - scrollTop === window.innerHeight) {
-        setIsPageEnd(true);
-      } else {
-        setIsPageEnd(false);
-      }
-    };
-
-    window.addEventListener('scroll', listener);
-    return () => window.removeEventListener('scroll', listener);
-  }, []);
 
   useEffect(() => {
     if (isPageEnd && limit < 150) {
