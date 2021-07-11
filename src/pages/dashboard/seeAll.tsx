@@ -1,48 +1,64 @@
 import Grid from '../../components/Grid/styles';
 import Layout from '../../components/Layout';
 import Card from '../../components/Card';
-import Heading from '../../components/Heading/styles';
 
 import * as S from '../../styles/pages/seeAll';
 import useFetch from '../../hooks/useFetch';
 import PokemonProps, { PokemonsByLimit } from '../../@types/pokemon';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useCallback } from 'react';
 import fetchJson from '../../utils/fetchJson';
-import { useEffect } from 'react';
 
 const DashBoard = () => {
   const [pokemons, setPokemons] = useState<PokemonProps[]>([]);
-  const url = `${process.env.NEXT_PUBLIC_API_URL}pokemon?limit=150`;
-  const { result, loading } = useFetch<PokemonsByLimit>(url);
+  const [isPageEnd, setIsPageEnd] = useState(false);
+  const [limit, setLimit] = useState(25);
+  const url = `${process.env.NEXT_PUBLIC_API_URL}?limit=150`;
+  const { result } = useFetch<PokemonsByLimit>(url);
 
   const handlePokemons = useCallback(async () => {
-    result?.results.map(async item => {
-      const response = await fetchJson<PokemonProps>(item.url);
-      setPokemons(prevState => [...prevState, response]);
-    });
+    if (result) {
+      result.results.map(async item => {
+        const response = await fetchJson<PokemonProps>(item.url);
+        setPokemons(prevState => [...prevState, response]);
+      });
+    }
   }, [result]);
 
   useEffect(() => {
     handlePokemons();
   }, [handlePokemons]);
 
+  useEffect(() => {
+    const listener: EventListener = event => {
+      const target: HTMLDocument = event.target as HTMLDocument;
+      const { scrollTop, scrollHeight } = target.documentElement;
+
+      if (scrollHeight - scrollTop === window.innerHeight) {
+        setIsPageEnd(true);
+      } else {
+        setIsPageEnd(false);
+      }
+    };
+
+    window.addEventListener('scroll', listener);
+    return () => window.removeEventListener('scroll', listener);
+  }, []);
+
+  useEffect(() => {
+    if (isPageEnd && limit < 150) {
+      setLimit(prevLimit => prevLimit + 25);
+    }
+  }, [isPageEnd, limit]);
+
   return (
     <Layout>
       <S.Container>
-        {loading ? (
-          <S.Content>
-            <Heading level={2} color="grey500" fontSize="xlarge">
-              Loading {pokemons.length} pokemons...
-            </Heading>
-          </S.Content>
-        ) : (
-          <Grid min="200px">
-            {pokemons.map(pokemon => (
-              <Card key={pokemon.id} pokemon={pokemon} />
-            ))}
-          </Grid>
-        )}
+        <Grid min="200px">
+          {pokemons.slice(0, limit).map(pokemon => (
+            <Card key={pokemon.id} pokemon={pokemon} />
+          ))}
+        </Grid>
       </S.Container>
     </Layout>
   );

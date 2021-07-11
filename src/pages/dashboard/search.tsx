@@ -14,7 +14,7 @@ const Search = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const debouncedValue = useDebounce(inputValue);
 
-  const url = `${process.env.NEXT_PUBLIC_API_URL}/pokemon/${debouncedValue}`;
+  const url = `${process.env.NEXT_PUBLIC_API_URL}/${debouncedValue}`;
   const { result: pokemon, error } = useFetch<PokemonProps>(url);
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +34,11 @@ const Search = () => {
               />
             </div>
             {error && <Error>Erro ao buscar pokemon</Error>}
-            <Grid columns={4}>{pokemon && <Card pokemon={pokemon} />}</Grid>
+            {pokemon && (
+              <Grid columns={4}>
+                <Card pokemon={pokemon} />
+              </Grid>
+            )}
           </S.Content>
         </Wrapper>
       </S.Container>
