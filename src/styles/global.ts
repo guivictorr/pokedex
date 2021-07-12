@@ -18,6 +18,7 @@ const Global = createGlobalStyle`
 
   html {
     font-size: 62.5%;
+    scroll-behavior: smooth;
   }
 
   input,textarea,button {

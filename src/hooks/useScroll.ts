@@ -8,7 +8,7 @@ const useScroll = () => {
     const listener: EventListener = event => {
       const target: HTMLDocument = event.target as HTMLDocument;
       const { scrollTop, scrollHeight } = target.documentElement;
-      setPageYOffset(prevState => prevState + window.pageYOffset);
+      setPageYOffset(window.pageYOffset);
 
       if (scrollHeight - scrollTop === window.innerHeight) {
         setIsPageEnd(true);
