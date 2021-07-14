@@ -3,7 +3,6 @@ import { ScrollButton } from './styles';
 
 const ScrollToTop = () => {
   const { pageYOffset } = useScroll();
-  const display = pageYOffset === 0 ? 'none' : 'block';
 
   const scrollTop = () => {
     window.scrollTo(0, 0);
@@ -12,7 +11,7 @@ const ScrollToTop = () => {
   return (
     <ScrollButton
       onClick={scrollTop}
-      style={{ display }}
+      pageYOffset={pageYOffset}
       title="Voltar para o início"
     />
   );

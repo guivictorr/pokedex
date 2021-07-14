@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import Button from '../Button';
 
-export const ScrollButton = styled(Button)`
+type ScrollButtonProps = {
+  pageYOffset: number;
+};
+
+export const ScrollButton = styled(Button)<ScrollButtonProps>`
   max-width: 15rem;
 
   font-size: 1.2rem;
@@ -13,6 +17,9 @@ export const ScrollButton = styled(Button)`
   box-shadow: 0px 2px 16px rgb(0 0 0 / 10%);
 
   transition: all 0.2s ease-in-out;
+  transform: ${({ pageYOffset }) =>
+    pageYOffset !== 0 ? 'scale(1)' : 'scale(0)'};
+
   &:hover {
     transform: scale(1.1);
   }
