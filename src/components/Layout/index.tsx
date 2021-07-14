@@ -1,5 +1,6 @@
 import { Fragment, ReactNode } from 'react';
 import Header from '../Header';
+import Modal from '../Modal';
 import ScrollToTop from '../ScrollToTop';
 
 type LayoutProps = {
@@ -12,6 +13,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Header />
       {children}
       <ScrollToTop />
+      <Modal />
     </Fragment>
   );
 };
