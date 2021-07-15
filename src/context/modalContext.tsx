@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { createContext, ReactNode, useState } from 'react';
+import PokemonProps from '../@types/pokemon';
 
 type ModalProviderProps = {
   children: ReactNode;
@@ -7,20 +8,28 @@ type ModalProviderProps = {
 
 type ModalContextProps = {
   isOpen: boolean;
-  onToggle: () => void;
+  payload: PokemonProps;
+  onOpen: (payload: PokemonProps) => void;
+  onClose: () => void;
 };
 
 export const ModalContext = createContext({} as ModalContextProps);
 
 const ModalProvider = ({ children }: ModalProviderProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [payload, setPayload] = useState<PokemonProps>({} as PokemonProps);
 
-  const onToggle = useCallback(() => {
-    setIsOpen(prevState => !prevState);
+  const onClose = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
+  const onOpen = useCallback((payload: PokemonProps) => {
+    setIsOpen(true);
+    setPayload(payload);
   }, []);
 
   return (
-    <ModalContext.Provider value={{ isOpen, onToggle }}>
+    <ModalContext.Provider value={{ isOpen, onClose, onOpen, payload }}>
       {children}
     </ModalContext.Provider>
   );

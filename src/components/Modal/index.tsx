@@ -4,16 +4,18 @@ import Button from '../Button';
 import Heading from '../Heading/styles';
 import Type from '../Type/styles';
 import { useModal } from '../../hooks/useModal';
+import { usePalette } from 'react-palette';
 
 const Modal = () => {
-  const { isOpen, onToggle } = useModal();
+  const { isOpen, onClose, payload } = useModal();
+  const { data } = usePalette(payload.sprites.front_default);
 
   return (
     <M.Container style={{ display: isOpen ? 'flex' : 'none' }}>
       <M.Content>
         <header>
-          <p>Título</p>
-          <button type="button" onClick={onToggle}>
+          <p>Detalhes</p>
+          <button type="button" onClick={onClose}>
             <Image
               src="/vector.svg"
               alt="Fechar modal"
@@ -25,12 +27,12 @@ const Modal = () => {
         <hr />
         <section>
           <Heading level={2} fontSize="large">
-            Pikachu
+            {payload.name}
           </Heading>
           <M.Row>
             <figure>
               <Image
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+                src={payload.sprites.front_default}
                 alt="Frente do pokemon"
                 width={96}
                 height={96}
@@ -38,7 +40,7 @@ const Modal = () => {
             </figure>
             <figure>
               <Image
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png"
+                src={payload.sprites.back_default}
                 alt="Atrás do pokemon"
                 width={96}
                 height={96}
@@ -47,15 +49,18 @@ const Modal = () => {
           </M.Row>
           <M.Row>
             <Heading level={3} fontSize="xmedium" fontWeight={600}>
-              1.23m
+              {payload.height / 10}m
             </Heading>
             <Heading level={3} fontSize="xmedium" fontWeight={600}>
-              54kg
+              {payload.weight / 10}kg
             </Heading>
           </M.Row>
           <M.Row>
-            <Type backgroundColor="#FFCB05">Elétrico</Type>
-            <Type backgroundColor="red">Elétrico</Type>
+            {payload.types.map(type => (
+              <Type backgroundColor={data.vibrant} key={type.type.name}>
+                {type.type.name}
+              </Type>
+            ))}
           </M.Row>
           <div>
             <h1>Estatísticas</h1>

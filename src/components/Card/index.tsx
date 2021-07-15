@@ -17,7 +17,7 @@ type CardProps = {
 
 const Card = ({ pokemon }: CardProps) => {
   const { checkIsFavorite, addFavorite } = useFavorites();
-  const { onToggle } = useModal();
+  const { onOpen } = useModal();
   const isNotPokemon = Object.keys(pokemon).includes('count');
   const [isFavorite, setIsFavorite] = useState(checkIsFavorite(pokemon));
 
@@ -55,7 +55,7 @@ const Card = ({ pokemon }: CardProps) => {
             )}
           </Palette>
         </div>
-        <Button title="Ver detalhes" onClick={onToggle} />
+        <Button title="Ver detalhes" onClick={() => onOpen(pokemon)} />
         <button onClick={addFavoritePokemon}>
           <img
             src={checkIsFavorite(pokemon) ? '/heart.svg' : '/heart-outline.svg'}
