@@ -1,17 +1,32 @@
+type Types = {
+  type: {
+    name: string;
+    url: string;
+  };
+};
+
+type Sprites = {
+  front_default: string;
+  back_default: string;
+};
+
+type Stats = {
+  base_state: number;
+  effort: number;
+  stat: {
+    name: string;
+    url: string;
+  };
+};
+
 type PokemonProps = {
   id: number;
   name: string;
-  sprites: {
-    front_default: string;
-    back_default: string;
-  };
-  types: [
-    {
-      type: {
-        name: string;
-      };
-    },
-  ];
+  sprites: Sprites;
+  types: Types[];
+  stats: Stats[];
+  weight: number;
+  height: number;
 };
 
 export type PokemonsByLimit = {
