@@ -1,4 +1,5 @@
 import { Fragment, ReactNode } from 'react';
+import { useModal } from '../../hooks/useModal';
 import Header from '../Header';
 import Modal from '../Modal';
 import ScrollToTop from '../ScrollToTop';
@@ -8,12 +9,13 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
+  const { isOpen } = useModal();
   return (
     <Fragment>
       <Header />
       {children}
       <ScrollToTop />
-      <Modal />
+      {isOpen && <Modal />}
     </Fragment>
   );
 };

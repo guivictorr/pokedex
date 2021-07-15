@@ -7,11 +7,11 @@ import { useModal } from '../../hooks/useModal';
 import { usePalette } from 'react-palette';
 
 const Modal = () => {
-  const { isOpen, onClose, payload } = useModal();
+  const { onClose, payload } = useModal();
   const { data } = usePalette(payload.sprites.front_default);
 
   return (
-    <M.Container style={{ display: isOpen ? 'flex' : 'none' }}>
+    <M.Container>
       <M.Content>
         <header>
           <p>Detalhes</p>
