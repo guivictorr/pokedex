@@ -3,14 +3,17 @@ import * as M from './styles';
 import Button from '../Button';
 import Heading from '../Heading/styles';
 import Type from '../Type/styles';
+import { useModal } from '../../hooks/useModal';
 
 const Modal = () => {
+  const { isOpen, onToggle } = useModal();
+
   return (
-    <M.Container>
+    <M.Container style={{ display: isOpen ? 'flex' : 'none' }}>
       <M.Content>
         <header>
           <p>Título</p>
-          <button type="button">
+          <button type="button" onClick={onToggle}>
             <Image
               src="/vector.svg"
               alt="Fechar modal"

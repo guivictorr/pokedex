@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Palette } from 'react-palette';
 import PokemonProps from '../../@types/pokemon';
 import { useFavorites } from '../../hooks/useFavorites';
+import { useModal } from '../../hooks/useModal';
 
 import Button from '../Button';
 import Heading from '../Heading/styles';
@@ -16,6 +17,7 @@ type CardProps = {
 
 const Card = ({ pokemon }: CardProps) => {
   const { checkIsFavorite, addFavorite } = useFavorites();
+  const { onToggle } = useModal();
   const isNotPokemon = Object.keys(pokemon).includes('count');
   const [isFavorite, setIsFavorite] = useState(checkIsFavorite(pokemon));
 
@@ -53,7 +55,7 @@ const Card = ({ pokemon }: CardProps) => {
             )}
           </Palette>
         </div>
-        <Button title="Ver detalhes" />
+        <Button title="Ver detalhes" onClick={onToggle} />
         <button onClick={addFavoritePokemon}>
           <img
             src={checkIsFavorite(pokemon) ? '/heart.svg' : '/heart-outline.svg'}
