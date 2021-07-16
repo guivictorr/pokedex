@@ -43,7 +43,7 @@ export const Content = styled.div`
   max-width: 378px;
   height: 639px;
 
-  padding: 24px;
+  padding: 16px;
   margin: 0 10px;
   border-radius: 8px;
   background: #f5f5f5;
@@ -76,5 +76,16 @@ export const Content = styled.div`
     justify-content: space-between;
     margin: 18px 0;
     text-transform: capitalize;
+  }
+`;
+
+export const Stats = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+
+  h2 {
+    align-self: flex-start;
   }
 `;

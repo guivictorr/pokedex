@@ -11,7 +11,7 @@ type Sprites = {
 };
 
 type Stats = {
-  base_state: number;
+  base_stat: number;
   effort: number;
   stat: {
     name: string;

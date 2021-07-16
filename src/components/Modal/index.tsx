@@ -5,11 +5,12 @@ import Heading from '../Heading/styles';
 import Type from '../Type/styles';
 import { useModal } from '../../hooks/useModal';
 import { usePalette } from 'react-palette';
+import Statistic from '../Statistic';
 
 const Modal = () => {
   const { onClose, payload } = useModal();
   const { data } = usePalette(payload.sprites.front_default);
-
+  console.log(payload);
   return (
     <M.Container>
       <M.Content>
@@ -62,17 +63,18 @@ const Modal = () => {
               </Type>
             ))}
           </M.Row>
-          <div>
-            <h1>Estatísticas</h1>
-            <h1>Stats</h1>
-            <h1>Stats</h1>
-            <h1>Stats</h1>
-            <h1>Stats</h1>
-            <h1>Stats</h1>
-            <h1>Stats</h1>
-            <h1>Stats</h1>
-            <h1>Stats</h1>
-          </div>
+          <M.Stats>
+            <Heading level={2} fontSize="medium" color="grey300">
+              Estatísticas
+            </Heading>
+            {payload.stats.map(({ base_stat, stat }) => (
+              <Statistic
+                key={stat.name}
+                percentage={base_stat}
+                label={stat.name}
+              />
+            ))}
+          </M.Stats>
         </section>
 
         <footer>
