@@ -1,4 +1,16 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const slideUp = keyframes`
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -47,6 +59,8 @@ export const Content = styled.div`
   margin: 0 10px;
   border-radius: 8px;
   background: #f5f5f5;
+
+  animation: ${slideUp} 0.4s ease-in-out;
 
   header {
     display: flex;
