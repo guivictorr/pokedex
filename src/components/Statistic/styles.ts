@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type FillerProps = {
   percentage: number;
@@ -27,8 +27,17 @@ export const ProgressBar = styled.div`
 `;
 
 export const Filler = styled.div<FillerProps>`
-  background-color: ${({ theme }) => theme.colors.primary};
+  ${({ percentage, theme }) =>
+    percentage > 100
+      ? css`
+          width: 100%;
+          background-color: ${theme.colors.danger};
+        `
+      : css`
+          width: ${percentage}%;
+          background-color: ${theme.colors.primary};
+        `}
+
   height: 100%;
-  width: ${({ percentage }) => percentage}%;
   border-radius: inherit;
 `;

@@ -6,11 +6,12 @@ import Type from '../Type/styles';
 import { useModal } from '../../hooks/useModal';
 import { usePalette } from 'react-palette';
 import Statistic from '../Statistic';
+import { useFavorites } from '../../hooks/useFavorites';
 
 const Modal = () => {
   const { onClose, payload } = useModal();
+  const { addFavorite, checkIsFavorite } = useFavorites();
   const { data } = usePalette(payload.sprites.front_default);
-  console.log(payload);
   return (
     <M.Container>
       <M.Content>
@@ -78,7 +79,15 @@ const Modal = () => {
         </section>
 
         <footer>
-          <Button title="Adicionar aos favoritos" />
+          <Button
+            title={
+              checkIsFavorite(payload)
+                ? 'Remover dos favoritos'
+                : 'Adicionar aos favoritos'
+            }
+            bg={checkIsFavorite(payload) ? 'danger' : 'primary'}
+            onClick={() => addFavorite(payload)}
+          />
         </footer>
       </M.Content>
     </M.Container>
