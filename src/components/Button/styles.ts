@@ -1,10 +1,9 @@
 import styled, { css } from 'styled-components';
+import { ButtonProps } from '.';
 
-type ButtonStyleProps = {
-  outlined?: boolean;
-};
+type ButtonStyle = Pick<ButtonProps, 'bg' | 'outlined'>;
 
-const Container = styled.button<ButtonStyleProps>`
+const Container = styled.button<ButtonStyle>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,7 +16,7 @@ const Container = styled.button<ButtonStyleProps>`
   font-weight: 500;
   font-size: ${({ theme }) => theme.fontSizes.medium};
 
-  ${({ outlined, theme }) =>
+  ${({ outlined, theme, bg }) =>
     outlined
       ? css`
           background: transparent;
@@ -25,7 +24,8 @@ const Container = styled.button<ButtonStyleProps>`
           color: ${theme.colors.grey300};
         `
       : css`
-          background: ${theme.colors.primary};
+          background: ${theme.colors[bg as keyof typeof theme.colors] ||
+          theme.colors.primary};
         `}
 `;
 
