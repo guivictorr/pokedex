@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
@@ -12,9 +12,7 @@ export const Container = styled.div`
     text-transform: capitalize;
   }
 
-  ${({ theme }) => css`
-    background: ${theme.colors.white};
-  `}
+  background-color: ${({ theme }) => theme.colors.white};
 `;
 
 export const Content = styled.div`
@@ -47,4 +45,11 @@ export const Content = styled.div`
       }
     }
   }
+`;
+
+export const Row = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0;
 `;

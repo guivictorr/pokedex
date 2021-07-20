@@ -15,6 +15,10 @@ const Type = styled.span<TypeProps>`
   background: ${({ backgroundColor = 'white' }) => backgroundColor};
   color: black;
 
+  & + span {
+    margin: 0 10px;
+  }
+
   ${({ size = 'sm', theme }) =>
     size === 'sm'
       ? css`
