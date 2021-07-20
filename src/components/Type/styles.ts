@@ -1,7 +1,8 @@
 import { PaletteColors } from 'react-palette';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type TypeProps = {
+  size?: 'sm' | 'md';
   backgroundColor: keyof PaletteColors | undefined;
 };
 
@@ -10,13 +11,19 @@ const Type = styled.span<TypeProps>`
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  width: auto;
-  padding: 0 10px;
-  height: 20px;
   font-weight: 500;
   background: ${({ backgroundColor = 'white' }) => backgroundColor};
   color: black;
-  margin: 15px 0;
+
+  ${({ size = 'sm', theme }) =>
+    size === 'sm'
+      ? css`
+          padding: 4px 12px;
+        `
+      : css`
+          padding: 6px 16px;
+          font-size: ${theme.fontSizes.xsmall};
+        `}
 `;
 
 export default Type;
