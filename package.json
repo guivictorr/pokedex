@@ -15,7 +15,6 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-icons": "^4.2.0",
-    "react-palette": "^1.0.2",
     "styled-components": "^5.2.3",
     "uuidv4": "^6.2.7"
   },
