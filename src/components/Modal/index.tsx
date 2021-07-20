@@ -59,7 +59,11 @@ const Modal = () => {
           </M.Row>
           <M.Row>
             {payload.types.map(type => (
-              <Type backgroundColor={data.vibrant} key={type.type.name}>
+              <Type
+                size="md"
+                backgroundColor={data.vibrant}
+                key={type.type.name}
+              >
                 {type.type.name}
               </Type>
             ))}

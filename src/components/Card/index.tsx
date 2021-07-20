@@ -46,15 +46,17 @@ const Card = ({ pokemon }: CardProps) => {
         <Heading level={2} fontWeight={500} fontSize="medium" color="grey200">
           ID: {pokemon.id}
         </Heading>
-        <div>
-          <Palette src={pokemon.sprites.front_default}>
-            {({ data }) => (
-              <Type backgroundColor={data.lightVibrant}>
-                {pokemon.types[0].type.name}
-              </Type>
-            )}
-          </Palette>
-        </div>
+        <Palette src={pokemon.sprites.front_default}>
+          {({ data }) => (
+            <C.Row>
+              {pokemon.types.map(type => (
+                <Type key={type.type.name} backgroundColor={data.lightVibrant}>
+                  {type.type.name}
+                </Type>
+              ))}
+            </C.Row>
+          )}
+        </Palette>
         <Button title="Ver detalhes" onClick={() => onOpen(pokemon)} />
         <button onClick={addFavoritePokemon}>
           <img
