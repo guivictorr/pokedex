@@ -4,14 +4,12 @@ import Button from '../Button';
 import Heading from '../Heading/styles';
 import Type from '../Type/styles';
 import { useModal } from '../../hooks/useModal';
-import { usePalette } from 'react-palette';
 import Statistic from '../Statistic';
 import { useFavorites } from '../../hooks/useFavorites';
 
 const Modal = () => {
   const { onClose, payload } = useModal();
   const { addFavorite, checkIsFavorite } = useFavorites();
-  const { data } = usePalette(payload.sprites.front_default);
   return (
     <M.Container>
       <M.Content>
@@ -58,13 +56,9 @@ const Modal = () => {
             </Heading>
           </M.Row>
           <M.Row>
-            {payload.types.map(type => (
-              <Type
-                size="md"
-                backgroundColor={data.vibrant}
-                key={type.type.name}
-              >
-                {type.type.name}
+            {payload.types.map(({ type }) => (
+              <Type size="md" type={type.name} key={type.name}>
+                {type.name}
               </Type>
             ))}
           </M.Row>
