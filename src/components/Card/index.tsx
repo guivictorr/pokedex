@@ -3,6 +3,7 @@ import { useState } from 'react';
 import PokemonProps from '../../@types/pokemon';
 import { useFavorites } from '../../hooks/useFavorites';
 import { useModal } from '../../hooks/useModal';
+import translateType from '../../utils/translateType';
 
 import Button from '../Button';
 import Heading from '../Heading/styles';
@@ -48,7 +49,7 @@ const Card = ({ pokemon }: CardProps) => {
         <C.Row>
           {pokemon.types.map(({ type }) => (
             <Type key={type.name} type={type.name}>
-              {type.name}
+              {translateType(type.name)}
             </Type>
           ))}
         </C.Row>
