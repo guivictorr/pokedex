@@ -6,6 +6,7 @@ import Type from '../Type/styles';
 import { useModal } from '../../hooks/useModal';
 import Statistic from '../Statistic';
 import { useFavorites } from '../../hooks/useFavorites';
+import translateType from '../../utils/translateType';
 
 const Modal = () => {
   const { onClose, payload } = useModal();
@@ -58,7 +59,7 @@ const Modal = () => {
           <M.Row>
             {payload.types.map(({ type }) => (
               <Type size="md" type={type.name} key={type.name}>
-                {type.name}
+                {translateType(type.name)}
               </Type>
             ))}
           </M.Row>
