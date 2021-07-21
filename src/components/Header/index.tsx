@@ -1,54 +1,54 @@
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import { useFavorites } from '../../hooks/useFavorites';
 
 import Link from '../Link';
 
 import * as H from './styles';
 
+enum Pathnames {
+  'favorites' = '/dashboard/favorites',
+  'search' = '/dashboard/search',
+  'seeAll' = '/dashboard/seeAll',
+}
+
 const Header = () => {
   const { pathname } = useRouter();
   const { favorites, checkIsEmpty } = useFavorites();
-
-  const pathNames = {
-    favorites: '/dashboard/favorites',
-    search: '/dashboard/search',
-    seeAll: '/dashboard/seeAll',
-  };
 
   return (
     <H.Container>
       <H.Content>
         <img src="/logo-bw.svg" alt="Pokémon" />
         <nav>
-          <Link href={pathNames.favorites}>
+          <Link href={Pathnames.favorites}>
             <input
               type="radio"
               name="navigation"
               id="favorites"
               hidden
-              defaultChecked={pathname === pathNames.favorites}
+              defaultChecked={pathname === Pathnames.favorites}
             />
             <label htmlFor="favorites">
               Favoritos {checkIsEmpty() || <span>{favorites.length}</span>}
             </label>
           </Link>
-          <Link href={pathNames.search}>
+          <Link href={Pathnames.search}>
             <input
               type="radio"
               name="navigation"
               id="search"
               hidden
-              defaultChecked={pathname === pathNames.search}
+              defaultChecked={pathname === Pathnames.search}
             />
             <label htmlFor="search">Procurar</label>
           </Link>
-          <Link href={pathNames.seeAll}>
+          <Link href={Pathnames.seeAll}>
             <input
               type="radio"
               name="navigation"
               id="see-all"
               hidden
-              defaultChecked={pathname === pathNames.seeAll}
+              defaultChecked={pathname === Pathnames.seeAll}
             />
             <label htmlFor="see-all">Ver todos</label>
           </Link>
