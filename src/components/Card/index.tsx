@@ -18,18 +18,12 @@ type CardProps = {
 const Card = ({ pokemon }: CardProps) => {
   const { checkIsFavorite, addFavorite } = useFavorites();
   const { onOpen } = useModal();
-  const isNotPokemon = Object.keys(pokemon).includes('count');
   const [isFavorite, setIsFavorite] = useState(checkIsFavorite(pokemon));
 
   const addFavoritePokemon = () => {
     addFavorite(pokemon);
     setIsFavorite(!isFavorite);
   };
-
-  // Gambiarra legal
-  if (isNotPokemon) {
-    return <></>;
-  }
 
   return (
     <C.Container>
