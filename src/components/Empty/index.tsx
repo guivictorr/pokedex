@@ -21,7 +21,7 @@ const Empty = () => {
       <p>
         Procure por pokémons para adicioná-los aos seus <br /> favoritos.
       </p>
-      <Link href="/dashboard/search">
+      <Link href="/dashboard/seeAll">
         <Button title="Procurar pokémons" outlined />
       </Link>
     </Container>

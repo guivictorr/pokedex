@@ -5,10 +5,10 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  border: 1px solid ${({ theme }) => theme.colors.grey300};
+  border: 1px solid ${({ theme }) => theme.colors.grey200};
   border-radius: 8px;
   padding: 18px 26px;
-  background: transparent;
+  background: ${({ theme }) => theme.colors.white};
 
   input {
     background: transparent;
@@ -16,6 +16,6 @@ export const Container = styled.div`
     border: none;
     outline: none;
     color: ${({ theme }) => theme.colors.grey300};
-    font-size: ${({ theme }) => theme.fontSizes.xsmall};
+    font-size: ${({ theme }) => theme.fontSizes.small};
   }
 `;
