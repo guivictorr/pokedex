@@ -32,16 +32,6 @@ const Header = () => {
               Favoritos {checkIsEmpty() || <span>{favorites.length}</span>}
             </label>
           </Link>
-          <Link href={Pathnames.search}>
-            <input
-              type="radio"
-              name="navigation"
-              id="search"
-              hidden
-              defaultChecked={pathname === Pathnames.search}
-            />
-            <label htmlFor="search">Procurar</label>
-          </Link>
           <Link href={Pathnames.seeAll}>
             <input
               type="radio"
