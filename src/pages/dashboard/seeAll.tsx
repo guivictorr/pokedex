@@ -6,7 +6,6 @@ import * as S from '../../styles/pages/seeAll';
 import useFetch from '../../hooks/useFetch';
 import PokemonProps, { PokemonsByLimit } from '../../@types/pokemon';
 import { useState, useEffect, ChangeEvent } from 'react';
-import { useCallback } from 'react';
 import fetchJson from '../../utils/fetchJson';
 import useScroll from '../../hooks/useScroll';
 import Input from '../../components/Input';
@@ -24,18 +23,28 @@ const DashBoard = () => {
     setInputText(searchTerm);
   };
 
-  const handlePokemons = useCallback(async () => {
+  useEffect(() => {
+    const promises: Promise<PokemonProps>[] = [];
+
     if (result) {
-      result.results.map(async item => {
-        const response = await fetchJson<PokemonProps>(item.url);
-        setPokemons(prevState => [...prevState, response]);
+      result.results.forEach(pokemon => {
+        const promise = fetchJson<PokemonProps>(pokemon.url);
+        promises.push(promise);
       });
     }
-  }, [result]);
 
-  useEffect(() => {
-    handlePokemons();
-  }, [handlePokemons]);
+    const handleSettledPromises = (
+      pokemons: PromiseSettledResult<PokemonProps>[],
+    ) => {
+      pokemons.forEach(pokemon => {
+        if (pokemon.status === 'fulfilled') {
+          setPokemons(prevState => [...prevState, pokemon.value]);
+        }
+      });
+    };
+
+    Promise.allSettled(promises).then(handleSettledPromises);
+  }, [result]);
 
   useEffect(() => {
     if (isPageEnd && limit < 150) {
