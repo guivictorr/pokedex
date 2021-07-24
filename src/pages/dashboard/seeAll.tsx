@@ -9,6 +9,7 @@ import { useState, useEffect, ChangeEvent } from 'react';
 import fetchJson from '../../utils/fetchJson';
 import useScroll from '../../hooks/useScroll';
 import Input from '../../components/Input';
+import Loading from '../../components/Loading';
 
 const DashBoard = () => {
   const [inputText, setInputText] = useState('');
@@ -25,14 +26,12 @@ const DashBoard = () => {
 
   useEffect(() => {
     const promises: Promise<PokemonProps>[] = [];
-
     if (result) {
       result.results.forEach(pokemon => {
         const promise = fetchJson<PokemonProps>(pokemon.url);
         promises.push(promise);
       });
     }
-
     const handleSettledPromises = (
       pokemons: PromiseSettledResult<PokemonProps>[],
     ) => {
@@ -42,7 +41,6 @@ const DashBoard = () => {
         }
       });
     };
-
     Promise.allSettled(promises).then(handleSettledPromises);
   }, [result]);
 
@@ -56,14 +54,22 @@ const DashBoard = () => {
     <Layout>
       <S.Container>
         <Input onChange={handleInputText} placeholder="Procure pelo nome..." />
-        <Grid min="200px">
-          {pokemons
-            .filter(({ name }) => inputText === '' || name.includes(inputText))
-            .slice(0, limit)
-            .map(pokemon => (
-              <Card key={pokemon.id} pokemon={pokemon} />
-            ))}
-        </Grid>
+        {!pokemons.length ? (
+          <S.Content>
+            <Loading />
+          </S.Content>
+        ) : (
+          <Grid min="200px">
+            {pokemons
+              .filter(
+                ({ name }) => inputText === '' || name.includes(inputText),
+              )
+              .slice(0, limit)
+              .map(pokemon => (
+                <Card key={pokemon.id} pokemon={pokemon} />
+              ))}
+          </Grid>
+        )}
       </S.Container>
     </Layout>
   );
