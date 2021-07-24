@@ -4,9 +4,9 @@ export const Container = styled.div`
   padding: 20px 100px;
 `;
 
-export const Content = styled.div`
+export const Content = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90vh;
+  height: 85vh;
 `;
