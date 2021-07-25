@@ -45,10 +45,10 @@ const DashBoard = () => {
   }, [result]);
 
   useEffect(() => {
-    if (isPageEnd && limit < 150) {
+    if (isPageEnd) {
       setLimit(prevLimit => prevLimit + 25);
     }
-  }, [isPageEnd, limit]);
+  }, [isPageEnd]);
 
   return (
     <Layout>
