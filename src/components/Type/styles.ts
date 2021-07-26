@@ -18,6 +18,12 @@ const Type = styled.span<TypeProps>`
   font-weight: 500;
   background: ${({ theme, type }) => theme.pokemonTypes[type as PokemonTypes]};
   color: ${({ type }) => (darkcolors.includes(type) ? '#f5f5f5' : '#0a0a0a')};
+  transition: all 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+    cursor: default;
+  }
 
   & + span {
     margin: 0 10px;

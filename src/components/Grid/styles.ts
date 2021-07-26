@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import styled, { css } from 'styled-components';
 
 type GridProps = {
@@ -6,7 +7,7 @@ type GridProps = {
   max?: string;
 };
 
-const Grid = styled.section<GridProps>`
+const Grid = styled(motion.section)<GridProps>`
   margin-top: 50px;
   display: grid;
   gap: 35px;

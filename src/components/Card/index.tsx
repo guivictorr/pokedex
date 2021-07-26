@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
 import PokemonProps from '../../@types/pokemon';
@@ -25,8 +26,30 @@ const Card = ({ pokemon }: CardProps) => {
     setIsFavorite(!isFavorite);
   };
 
+  const variants = {
+    open: {
+      opacity: 1,
+      y: 0,
+    },
+    closed: {
+      opacity: 0,
+      y: -10,
+    },
+    exit: {
+      opacity: 0,
+      y: -20,
+    },
+  };
+
   return (
-    <C.Container>
+    <C.Container
+      variants={variants}
+      transition={{ damping: 0 }}
+      layout
+      initial="closed"
+      animate="open"
+      exit="exit"
+    >
       <C.Content>
         <Image
           width={120}
@@ -48,12 +71,12 @@ const Card = ({ pokemon }: CardProps) => {
           ))}
         </C.Row>
         <Button title="Ver detalhes" onClick={() => onOpen(pokemon)} />
-        <button onClick={addFavoritePokemon}>
+        <motion.button whileTap={{ scale: 0.9 }} onClick={addFavoritePokemon}>
           <img
             src={checkIsFavorite(pokemon) ? '/heart.svg' : '/heart-outline.svg'}
             alt="Favoritar"
           />
-        </button>
+        </motion.button>
       </C.Content>
     </C.Container>
   );
