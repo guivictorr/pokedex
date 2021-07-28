@@ -24,7 +24,7 @@ const Favorites = () => {
               <Grid layout min="200px">
                 <AnimatePresence>
                   {favorites.map(favorite => (
-                    <Card pokemon={favorite} key={favorite.id} />
+                    <Card {...favorite} key={favorite.id} />
                   ))}
                 </AnimatePresence>
               </Grid>

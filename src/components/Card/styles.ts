@@ -35,15 +35,6 @@ export const Content = styled.div`
       position: absolute;
       top: 0;
       right: 0;
-      background: transparent;
-      outline: none;
-      border: none;
-      margin: 0;
-      cursor: pointer;
-      img {
-        width: 25px;
-        height: 25px;
-      }
     }
   }
 `;
