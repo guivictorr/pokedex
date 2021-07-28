@@ -7,6 +7,7 @@ import Layout from '../../components/Layout';
 import Wrapper from '../../components/Wrapper/styles';
 
 import * as F from '../../styles/pages/favorites';
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 
 const Favorites = () => {
   const { checkIsEmpty, favorites } = useFavorites();
@@ -19,11 +20,15 @@ const Favorites = () => {
           {isEmpty ? (
             <Empty />
           ) : (
-            <Grid min="200px">
-              {favorites.map(favorite => (
-                <Card pokemon={favorite} key={favorite.id} />
-              ))}
-            </Grid>
+            <AnimateSharedLayout>
+              <Grid layout min="200px">
+                <AnimatePresence>
+                  {favorites.map(favorite => (
+                    <Card {...favorite} key={favorite.id} />
+                  ))}
+                </AnimatePresence>
+              </Grid>
+            </AnimateSharedLayout>
           )}
         </Wrapper>
       </F.Container>

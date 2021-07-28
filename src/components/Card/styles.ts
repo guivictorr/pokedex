@@ -1,6 +1,7 @@
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
   width: 100%;
   height: auto;
   border-radius: 8px;
@@ -34,15 +35,6 @@ export const Content = styled.div`
       position: absolute;
       top: 0;
       right: 0;
-      background: transparent;
-      outline: none;
-      border: none;
-      margin: 0;
-      cursor: pointer;
-      img {
-        width: 25px;
-        height: 25px;
-      }
     }
   }
 `;

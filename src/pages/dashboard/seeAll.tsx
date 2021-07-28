@@ -66,7 +66,7 @@ const DashBoard = () => {
               )
               .slice(0, limit)
               .map(pokemon => (
-                <Card key={pokemon.id} pokemon={pokemon} />
+                <Card key={pokemon.id} {...pokemon} />
               ))}
           </Grid>
         )}
