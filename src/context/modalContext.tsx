@@ -21,10 +21,12 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
 
   const onClose = useCallback(() => {
     setIsOpen(false);
+    document.body.style.overflow = 'unset';
   }, []);
 
   const onOpen = useCallback((payload: PokemonProps) => {
     setIsOpen(true);
+    document.body.style.overflow = 'hidden';
     setPayload(payload);
   }, []);
 

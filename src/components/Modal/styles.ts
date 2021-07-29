@@ -1,18 +1,7 @@
-import styled, { keyframes } from 'styled-components';
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
 
-const slideUp = keyframes`
-  from {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-`;
-
-export const Container = styled.div`
+export const Container = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,9 +10,6 @@ export const Container = styled.div`
 
   position: fixed;
   top: 0;
-  z-index: 9999;
-
-  background: rgba(0, 0, 0, 0.5);
 `;
 
 export const Row = styled.div`
@@ -48,7 +34,7 @@ export const Row = styled.div`
   }
 `;
 
-export const Content = styled.div`
+export const Content = styled(motion.div)`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -58,9 +44,7 @@ export const Content = styled.div`
   padding: 16px;
   margin: 0 10px;
   border-radius: 8px;
-  background: #f5f5f5;
-
-  animation: ${slideUp} 0.4s ease-in-out;
+  background: ${({ theme }) => theme.colors.white};
 
   header {
     display: flex;
