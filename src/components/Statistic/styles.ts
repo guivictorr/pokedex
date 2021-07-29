@@ -1,4 +1,5 @@
-import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
 
 type FillerProps = {
   percentage: number;
@@ -26,17 +27,9 @@ export const ProgressBar = styled.div`
   background-color: ${({ theme }) => theme.colors.grey200};
 `;
 
-export const Filler = styled.div<FillerProps>`
-  ${({ percentage, theme }) =>
-    percentage > 100
-      ? css`
-          width: 100%;
-          background-color: ${theme.colors.danger};
-        `
-      : css`
-          width: ${percentage}%;
-          background-color: ${theme.colors.primary};
-        `}
+export const Filler = styled(motion.div)<FillerProps>`
+  background-color: ${({ percentage, theme }) =>
+    percentage > 100 ? theme.colors.danger : theme.colors.primary};
 
   height: 100%;
   border-radius: inherit;
