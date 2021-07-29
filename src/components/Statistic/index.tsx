@@ -2,7 +2,7 @@ import * as S from './styles';
 
 type StatisticProps = {
   percentage: number;
-  label: StatKeys;
+  label: string;
 };
 
 enum StatNames {
@@ -19,7 +19,7 @@ type StatKeys = keyof typeof StatNames;
 const Statistic = ({ percentage, label }: StatisticProps) => {
   return (
     <S.Container>
-      <p>{StatNames[label]}</p>
+      <p>{StatNames[label as StatKeys]}</p>
       <S.ProgressBar>
         <S.Filler
           initial={{ width: 0 }}
