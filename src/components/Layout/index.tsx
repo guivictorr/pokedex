@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion';
 import { Fragment, ReactNode } from 'react';
 import { useModal } from '../../hooks/useModal';
 import Header from '../Header';
@@ -15,7 +16,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Header />
       {children}
       <ScrollToTop />
-      {isOpen && <Modal />}
+      <AnimatePresence>{isOpen && <Modal />}</AnimatePresence>
     </Fragment>
   );
 };

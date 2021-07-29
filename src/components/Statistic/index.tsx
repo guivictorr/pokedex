@@ -21,7 +21,12 @@ const Statistic = ({ percentage, label }: StatisticProps) => {
     <S.Container>
       <p>{StatNames[label as StatKeys]}</p>
       <S.ProgressBar>
-        <S.Filler percentage={percentage} />
+        <S.Filler
+          initial={{ width: 0 }}
+          animate={{ width: percentage > 100 ? '100%' : percentage + '%' }}
+          transition={{ duration: 1 }}
+          percentage={percentage}
+        />
       </S.ProgressBar>
       <p>{percentage}</p>
     </S.Container>

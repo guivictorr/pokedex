@@ -12,8 +12,12 @@ const Modal = () => {
   const { onClose, payload } = useModal();
   const { addFavorite, checkIsFavorite } = useFavorites();
   return (
-    <M.Container>
-      <M.Content>
+    <M.Container
+      initial={{ opacity: 0 }}
+      animate={{ background: 'rgba(0,0,0,0.5)', opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <M.Content layoutId={payload.name}>
         <header>
           <p>Detalhes</p>
           <button type="button" onClick={onClose}>

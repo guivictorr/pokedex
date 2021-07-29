@@ -33,6 +33,7 @@ const Card = (pokemon: PokemonProps) => {
       variants={variants}
       transition={{ damping: 0 }}
       layout
+      layoutId={pokemon.name}
       initial="closed"
       animate="open"
       exit="exit"

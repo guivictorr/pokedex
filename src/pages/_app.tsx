@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app';
+import { AnimateSharedLayout } from 'framer-motion';
 import { ThemeProvider } from 'styled-components';
 
 import FavoritesProvider from '../context/favoriteContext';
@@ -14,7 +15,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       <ModalProvider>
         <FavoritesProvider>
-          <Component {...pageProps} />
+          <AnimateSharedLayout type="crossfade">
+            <Component {...pageProps} />
+          </AnimateSharedLayout>
         </FavoritesProvider>
       </ModalProvider>
     </ThemeProvider>
