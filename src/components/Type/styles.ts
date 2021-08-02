@@ -8,7 +8,7 @@ type TypeProps = {
   type: string;
 };
 
-const darkcolors = ['fighting', 'poison'];
+const darkcolors = ['fighting', 'poison', 'dark'];
 
 const Type = styled.span<TypeProps>`
   display: flex;
