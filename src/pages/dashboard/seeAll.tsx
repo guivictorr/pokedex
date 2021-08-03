@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import Grid from '../../components/Grid/styles';
 import Layout from '../../components/Layout';
 import Card from '../../components/Card';
@@ -5,33 +6,27 @@ import Card from '../../components/Card';
 import * as S from '../../styles/pages/seeAll';
 import useFetch from '../../hooks/useFetch';
 import PokemonProps, { PokemonsByLimit } from '../../@types/pokemon';
-import { useState, useEffect, ChangeEvent } from 'react';
 import fetchJson from '../../utils/fetchJson';
-import useScroll from '../../hooks/useScroll';
-import Input from '../../components/Input';
 import Loading from '../../components/Loading';
+import useScroll from '../../hooks/useScroll';
 
 const DashBoard = () => {
-  const [inputText, setInputText] = useState('');
+  const [offset, setOffset] = useState(0);
   const [pokemons, setPokemons] = useState<PokemonProps[]>([]);
-  const [limit, setLimit] = useState(25);
-  const url = `${process.env.NEXT_PUBLIC_API_URL}?limit=150`;
   const { isPageEnd } = useScroll();
+  const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`;
   const { result } = useFetch<PokemonsByLimit>(url);
-
-  const handleInputText = (event: ChangeEvent<HTMLInputElement>) => {
-    const searchTerm = event.target.value.toLowerCase().trim();
-    setInputText(searchTerm);
-  };
 
   useEffect(() => {
     const promises: Promise<PokemonProps>[] = [];
+
     if (result) {
       result.results.forEach(pokemon => {
         const promise = fetchJson<PokemonProps>(pokemon.url);
         promises.push(promise);
       });
     }
+
     const handleSettledPromises = (
       pokemons: PromiseSettledResult<PokemonProps>[],
     ) => {
@@ -41,33 +36,28 @@ const DashBoard = () => {
         }
       });
     };
+
     Promise.allSettled(promises).then(handleSettledPromises);
   }, [result]);
 
   useEffect(() => {
     if (isPageEnd) {
-      setLimit(prevLimit => prevLimit + 25);
+      setOffset(prevState => (prevState += 20));
     }
   }, [isPageEnd]);
 
   return (
     <Layout>
       <S.Container>
-        <Input onChange={handleInputText} placeholder="Procure pelo nome..." />
         {!pokemons.length ? (
           <S.Content>
             <Loading />
           </S.Content>
         ) : (
           <Grid min="200px">
-            {pokemons
-              .filter(
-                ({ name }) => inputText === '' || name.includes(inputText),
-              )
-              .slice(0, limit)
-              .map(pokemon => (
-                <Card key={pokemon.id} {...pokemon} />
-              ))}
+            {pokemons.map(pokemon => (
+              <Card key={pokemon.id} {...pokemon} />
+            ))}
           </Grid>
         )}
       </S.Container>
