@@ -22,7 +22,7 @@ const Empty = () => {
         Procure por pokémons para adicioná-los aos seus <br /> favoritos.
       </p>
       <Link href="/dashboard/seeAll">
-        <Button title="Procurar pokémons" outlined />
+        <Button variant="outlined">Procurar pokémons</Button>
       </Link>
     </Container>
   );

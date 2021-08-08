@@ -58,7 +58,7 @@ const Card = (pokemon: PokemonProps) => {
             </Type>
           ))}
         </C.Row>
-        <Button title="Ver detalhes" onClick={() => onOpen(pokemon)} />
+        <Button onClick={() => onOpen(pokemon)}>Ver detalhes</Button>
         <FavoriteButton {...pokemon} />
       </C.Content>
     </C.Container>
