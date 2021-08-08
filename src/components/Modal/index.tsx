@@ -83,14 +83,13 @@ const Modal = () => {
 
         <footer>
           <Button
-            title={
-              checkIsFavorite(payload)
-                ? 'Remover dos favoritos'
-                : 'Adicionar aos favoritos'
-            }
-            bg={checkIsFavorite(payload) ? 'danger' : 'primary'}
+            variant={checkIsFavorite(payload) ? 'danger' : 'default'}
             onClick={() => addFavorite(payload)}
-          />
+          >
+            {checkIsFavorite(payload)
+              ? 'Remover dos favoritos'
+              : 'Adicionar aos favoritos'}
+          </Button>
         </footer>
       </M.Content>
     </M.Container>

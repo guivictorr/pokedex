@@ -19,7 +19,7 @@ export default function Login() {
           </Heading>
 
           <Link href="/dashboard/favorites">
-            <Button title="Entrar" type="submit" />
+            <Button type="submit">Entrar</Button>
           </Link>
         </L.Content>
       </Wrapper>
