@@ -9,11 +9,9 @@ const ScrollToTop = () => {
   };
 
   return (
-    <ScrollButton
-      onClick={scrollTop}
-      pageYOffset={pageYOffset}
-      title="Voltar para o início"
-    />
+    <ScrollButton onClick={scrollTop} pageYOffset={pageYOffset}>
+      Voltar para o início
+    </ScrollButton>
   );
 };
 
