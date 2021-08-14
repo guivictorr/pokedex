@@ -20,6 +20,15 @@ export const ScrollButton = styled(Button)<ScrollButtonProps>`
   transform: ${({ pageYOffset }) =>
     pageYOffset !== 0 ? 'scale(1)' : 'scale(0)'};
 
+  @media (max-width: 500px) {
+    bottom: 75px;
+    right: 25px;
+    width: 50px;
+    border-radius: 50%;
+    height: 50px;
+    padding: 0;
+  }
+
   &:hover {
     transform: scale(1.1);
   }
