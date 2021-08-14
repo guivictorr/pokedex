@@ -16,8 +16,9 @@ const Global = createGlobalStyle`
     font-family: 'Poppins', sans-serif;
   }
 
+  body,
   html {
-    font-size: 62.5%;
+    font-size: calc(16px + (19 - 16) * ((100vw - 320px) / (1920 - 320)));
     scroll-behavior: smooth;
   }
 

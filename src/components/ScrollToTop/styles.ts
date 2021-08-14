@@ -6,9 +6,9 @@ type ScrollButtonProps = {
 };
 
 export const ScrollButton = styled(Button)<ScrollButtonProps>`
-  max-width: 15rem;
+  max-width: 200px;
 
-  font-size: 1.2rem;
+  font-size: ${({ theme }) => theme.fontSizes.small};
   padding: 12px 16px;
 
   position: fixed;

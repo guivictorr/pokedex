@@ -31,7 +31,6 @@ export const Content = styled.div`
       width: 17px;
       height: 17px;
       border-radius: 50%;
-      font-size: ${({ theme }) => theme.fontSizes.xsmall};
       display: flex;
       place-content: center;
     }
@@ -68,7 +67,6 @@ export const Content = styled.div`
     align-items: center;
     justify-content: space-between;
     border: 1px solid ${({ theme }) => theme.colors.grey400};
-    font-size: ${({ theme }) => theme.fontSizes.xsmall};
     border-radius: 8px;
     background: transparent;
     cursor: pointer;
