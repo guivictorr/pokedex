@@ -23,7 +23,7 @@ export const Content = styled.main`
 
   button {
     margin-top: 30px;
-    max-width: 35rem;
+    max-width: 20rem;
   }
 
   header {
