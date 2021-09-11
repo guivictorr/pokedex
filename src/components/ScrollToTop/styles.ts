@@ -6,9 +6,9 @@ type ScrollButtonProps = {
 };
 
 export const ScrollButton = styled(Button)<ScrollButtonProps>`
-  max-width: 15rem;
+  max-width: 200px;
 
-  font-size: 1.2rem;
+  font-size: ${({ theme }) => theme.fontSizes.small};
   padding: 12px 16px;
 
   position: fixed;
@@ -19,6 +19,15 @@ export const ScrollButton = styled(Button)<ScrollButtonProps>`
   transition: all 0.2s ease-in-out;
   transform: ${({ pageYOffset }) =>
     pageYOffset !== 0 ? 'scale(1)' : 'scale(0)'};
+
+  @media (max-width: 500px) {
+    bottom: 75px;
+    right: 25px;
+    width: 50px;
+    border-radius: 50%;
+    height: 50px;
+    padding: 0;
+  }
 
   &:hover {
     transform: scale(1.1);

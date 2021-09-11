@@ -16,7 +16,8 @@ const Search = () => {
   const { result } = useFetch<PokemonProps>(url);
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputText(event.target.value || '');
+    const pokeName = event.target.value.toLowerCase().trim();
+    setInputText(pokeName || '');
   };
 
   return (

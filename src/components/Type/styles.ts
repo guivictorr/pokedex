@@ -19,6 +19,7 @@ const Type = styled.span<TypeProps>`
   background: ${({ theme, type }) => theme.pokemonTypes[type as PokemonTypes]};
   color: ${({ type }) => (darkcolors.includes(type) ? '#f5f5f5' : '#0a0a0a')};
   transition: all 0.2s;
+  font-size: ${theme.fontSizes.xsmall};
 
   &:hover {
     transform: scale(1.05);
@@ -29,14 +30,13 @@ const Type = styled.span<TypeProps>`
     margin: 0 10px;
   }
 
-  ${({ size = 'sm', theme }) =>
+  ${({ size = 'sm' }) =>
     size === 'sm'
       ? css`
           padding: 4px 12px;
         `
       : css`
           padding: 6px 16px;
-          font-size: ${theme.fontSizes.xsmall};
         `}
 `;
 

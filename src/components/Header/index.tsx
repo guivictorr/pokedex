@@ -1,5 +1,7 @@
+import { FiHeart, FiList, FiSearch } from 'react-icons/fi';
 import { useRouter } from 'next/router';
 import { useFavorites } from '../../hooks/useFavorites';
+import useMediaQuery from '../../hooks/useMediaQuery';
 
 import Link from '../Link';
 
@@ -14,6 +16,7 @@ enum Pathnames {
 const Header = () => {
   const { pathname } = useRouter();
   const { favorites, checkIsEmpty } = useFavorites();
+  const isMobile = useMediaQuery('(max-width: 500px)');
 
   return (
     <H.Container>
@@ -29,7 +32,8 @@ const Header = () => {
               defaultChecked={pathname === Pathnames.favorites}
             />
             <label htmlFor="favorites">
-              Favoritos {checkIsEmpty() || <span>{favorites.length}</span>}
+              {isMobile ? <FiHeart size={25} /> : 'Favoritos'}{' '}
+              {checkIsEmpty() || <span>{favorites.length}</span>}
             </label>
           </Link>
           <Link href={Pathnames.seeAll}>
@@ -40,7 +44,9 @@ const Header = () => {
               hidden
               defaultChecked={pathname === Pathnames.seeAll}
             />
-            <label htmlFor="see-all">Ver todos</label>
+            <label htmlFor="see-all">
+              {isMobile ? <FiList size={25} /> : 'Ver todos'}
+            </label>
           </Link>
           <Link href={Pathnames.search}>
             <input
@@ -50,7 +56,9 @@ const Header = () => {
               hidden
               defaultChecked={pathname === Pathnames.search}
             />
-            <label htmlFor="search">Procurar</label>
+            <label htmlFor="search">
+              {isMobile ? <FiSearch size={25} /> : 'Procurar'}
+            </label>
           </Link>
         </nav>
       </H.Content>

@@ -5,6 +5,12 @@ export const Container = styled.header`
   width: 100%;
   height: 50px;
   background-color: ${({ theme }) => theme.colors.primary};
+
+  @media (max-width: 500px) {
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+  }
 `;
 
 export const Content = styled.div`
@@ -14,6 +20,13 @@ export const Content = styled.div`
   max-width: 80%;
   width: 100%;
   margin: 0 auto;
+
+  @media (max-width: 500px) {
+    justify-content: center;
+    img {
+      display: none;
+    }
+  }
 
   img {
     width: 75px;
@@ -31,9 +44,9 @@ export const Content = styled.div`
       width: 17px;
       height: 17px;
       border-radius: 50%;
-      font-size: ${({ theme }) => theme.fontSizes.xsmall};
       display: flex;
       place-content: center;
+      font-size: ${({ theme }) => theme.fontSizes.xsmall};
     }
 
     label {
@@ -68,7 +81,6 @@ export const Content = styled.div`
     align-items: center;
     justify-content: space-between;
     border: 1px solid ${({ theme }) => theme.colors.grey400};
-    font-size: ${({ theme }) => theme.fontSizes.xsmall};
     border-radius: 8px;
     background: transparent;
     cursor: pointer;
