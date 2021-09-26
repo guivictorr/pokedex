@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Statistic /> should render correctly 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+  max-width: 350px;
+  margin: 8px 0;
+}
+
+.c0 p {
+  font-size: 12px;
+  width: 32px;
+}
+
+.c1 {
+  height: 10px;
+  width: 100%;
+  max-width: 250px;
+  border-radius: 8px;
+  background-color: #d2d4d6;
+}
+
+.c2 {
+  background-color: #FFCB05;
+  height: 100%;
+  border-radius: inherit;
+}
+
+<div
+  class="c0"
+>
+  <p>
+    DEF
+  </p>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2"
+      data-testid="filler"
+      style="width: 0px;"
+    />
+  </div>
+  <p>
+    100
+  </p>
+</div>
+`;
