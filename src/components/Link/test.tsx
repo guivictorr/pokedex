@@ -4,7 +4,9 @@ import Link from '.';
 describe('<Link/>', () => {
   it('should render correctly', () => {
     render(<Link href="https://www.google.com">Link</Link>);
-    expect(screen.getByRole('link', { name: /link/i })).toBeInTheDocument();
+    const link = screen.getByRole('link', { name: /link/i });
+    expect(link).toBeInTheDocument();
+    expect(link).toMatchSnapshot();
   });
 
   it('should render with correct href', () => {
