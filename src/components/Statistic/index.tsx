@@ -1,3 +1,4 @@
+import { StatKeys } from '../../@types/pokemon';
 import * as S from './styles';
 
 type StatisticProps = {
@@ -13,8 +14,6 @@ export enum StatNames {
   'special-defense' = 'S.DEF',
   speed = 'SPD',
 }
-
-export type StatKeys = keyof typeof StatNames;
 
 const Statistic = ({ percentage, label }: StatisticProps) => {
   return (

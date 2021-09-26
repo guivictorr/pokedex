@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/react';
-import Statistic, { StatKeys, StatNames } from '.';
+import Statistic, { StatNames } from '.';
+import { StatKeys } from '../../@types/pokemon';
 import theme from '../../styles/theme';
 import customRender from '../../utils/customRender';
 
