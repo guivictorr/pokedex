@@ -13,7 +13,5 @@ describe('<Error/>', () => {
     expect(message).toHaveStyle({
       color: theme.colors.danger,
     });
-
-    screen.logTestingPlaygroundURL();
   });
 });
