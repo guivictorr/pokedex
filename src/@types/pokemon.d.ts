@@ -1,3 +1,7 @@
+import { StatNames } from '../components/Statistic';
+
+export type StatKeys = keyof typeof StatNames;
+
 type Types = {
   type: {
     name: string;
@@ -14,7 +18,7 @@ type Stats = {
   base_stat: number;
   effort: number;
   stat: {
-    name: string;
+    name: StatKeys;
     url: string;
   };
 };

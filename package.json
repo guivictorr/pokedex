@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "jest -u",
+    "test:watch": "jest --watch -u"
   },
   "dependencies": {
     "framer-motion": "^4.1.17",

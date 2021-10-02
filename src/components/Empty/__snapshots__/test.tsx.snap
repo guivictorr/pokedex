@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Empty/> should render correctly 1`] = `
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  outline: transparent;
+  border: none;
+  border-radius: 8px;
+  padding: 18px 26px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  background-color: transparent;
+  border: 1px solid #7d7e80;
+  color: #7d7e80;
+}
+
+.c1 {
+  color: #1e1e1f;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+.c0 p {
+  color: #7d7e80;
+  margin-top: 10px;
+}
+
+.c0 a,
+.c0 button {
+  max-width: 250px;
+}
+
+.c0 a {
+  margin-top: 40px;
+}
+
+<section
+  class="c0"
+>
+  <div
+    style="display: inline-block; max-width: 100%; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;"
+  >
+    <div
+      style="box-sizing: border-box; display: block; max-width: 100%;"
+    >
+      <img
+        alt=""
+        aria-hidden="true"
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiLz4="
+        style="max-width: 100%; display: block; margin: 0px; padding: 0px;"
+      />
+    </div>
+    <noscript />
+    <img
+      alt="Astronauta em um espaço vazio"
+      data-nimg="true"
+      decoding="async"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-sizing: border-box; padding: 0px; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+    />
+  </div>
+  <h2
+    class="c1"
+    color="grey500"
+    font-size="large"
+    font-weight="600"
+  >
+    Está meio vazio por aqui!
+  </h2>
+  <p>
+    Procure por pokémons para adicioná-los aos seus 
+    <br />
+     favoritos.
+  </p>
+  <a
+    href="/dashboard/search"
+  >
+    <button
+      class="c2"
+    >
+      Procurar pokémons
+    </button>
+  </a>
+</section>
+`;
