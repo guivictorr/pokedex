@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 
-type Variants = 'outlined' | 'danger' | 'default';
+export type Variants = 'outlined' | 'danger' | 'default';
 
 type ButtonStyle = {
   variant?: Variants;
