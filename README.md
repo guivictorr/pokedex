@@ -1,6 +1,8 @@
 <h1 align='center'>🐛 Pokedex</h1>
 <p align='center'>Pokedex com funções de favoritar, pesquisar, ver detalhes, ver todos. Feito com Next.js</p>
 
+[![Build Status](https://img.shields.io/github/workflow/status/guivictorr/pokedex/Build?logo=github)](https://github.com/guivictorr/pokedex/actions?query=workflow%3ABuild)
+
 ## 🛠 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
