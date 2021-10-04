@@ -1,7 +1,9 @@
 <h1 align='center'>🐛 Pokedex</h1>
 <p align='center'>Pokedex com funções de favoritar, pesquisar, ver detalhes, ver todos. Feito com Next.js</p>
 
-[![Build Status](https://img.shields.io/github/workflow/status/guivictorr/pokedex/Build?color=%23FFCB05&style=for-the-badge)](https://github.com/guivictorr/pokedex/actions?query=workflow%3ABuild)
+<div align="center">
+  <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/guivictorr/pokedex/Build?color=%23FFCB05&style=for-the-badge">
+</div>
 
 ## 🛠 Tecnologias
 
