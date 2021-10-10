@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 
 const useScroll = () => {
   const [isPageEnd, setIsPageEnd] = useState(false);
-  const [pageYOffset, setPageYOffset] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     const listener: EventListener = event => {
-      const target: HTMLDocument = event.target as HTMLDocument;
+      const target: Document = event.target as Document;
       const { scrollTop, scrollHeight } = target.documentElement;
-      setPageYOffset(window.pageYOffset);
+      setScrollY(window.scrollY);
 
       if (scrollHeight - scrollTop === window.innerHeight) {
         setIsPageEnd(true);
@@ -23,7 +23,8 @@ const useScroll = () => {
 
   return {
     isPageEnd,
-    pageYOffset,
+    scrollY,
+    scrollToTop: () => window.scrollTo(0, 0),
   };
 };
 

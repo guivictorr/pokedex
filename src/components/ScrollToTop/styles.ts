@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Button from '../Button';
 
 type ScrollButtonProps = {
-  pageYOffset: number;
+  scrollY: number;
 };
 
 export const ScrollButton = styled(Button)<ScrollButtonProps>`
@@ -17,8 +17,7 @@ export const ScrollButton = styled(Button)<ScrollButtonProps>`
   box-shadow: 0px 2px 16px rgb(0 0 0 / 10%);
 
   transition: all 0.2s ease-in-out;
-  transform: ${({ pageYOffset }) =>
-    pageYOffset !== 0 ? 'scale(1)' : 'scale(0)'};
+  transform: ${({ scrollY }) => (scrollY === 0 ? 'scale(0)' : 'scale(1)')};
 
   @media (max-width: 500px) {
     bottom: 75px;
