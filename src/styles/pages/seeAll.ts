@@ -10,3 +10,7 @@ export const Content = styled.section`
   justify-content: center;
   height: 85vh;
 `;
+
+export const ListBottom = styled.li`
+  visibility: hidden;
+`;

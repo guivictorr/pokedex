@@ -4,15 +4,11 @@ import { ScrollButton } from './styles';
 import { BsArrowUpShort } from 'react-icons/bs';
 
 const ScrollToTop = () => {
-  const { pageYOffset } = useScroll();
+  const { scrollY, scrollToTop } = useScroll();
   const isMobile = useMediaQuery('(max-width: 500px)');
 
-  const scrollTop = () => {
-    window.scrollTo(0, 0);
-  };
-
   return (
-    <ScrollButton onClick={scrollTop} pageYOffset={pageYOffset}>
+    <ScrollButton onClick={scrollToTop} scrollY={scrollY}>
       {isMobile ? <BsArrowUpShort size={25} /> : 'Voltar para o início'}
     </ScrollButton>
   );
