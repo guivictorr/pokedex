@@ -43,8 +43,10 @@ const DashBoard = () => {
     setTimeout(() => {
       if (!listBottom.current) return;
 
-      const intersectionObserver = new IntersectionObserver(() => {
-        setOffset(prevState => prevState + 20);
+      const intersectionObserver = new IntersectionObserver(entries => {
+        if (entries.some(entry => entry.isIntersecting)) {
+          setOffset(prevState => prevState + 20);
+        }
       });
 
       intersectionObserver.observe(listBottom.current);
