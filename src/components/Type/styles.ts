@@ -1,11 +1,11 @@
 import styled, { css } from 'styled-components';
 import theme from '../../styles/theme';
 
-type PokemonTypes = keyof typeof theme.pokemonTypes;
+export type PokemonTypes = keyof typeof theme.pokemonTypes;
 
 type TypeProps = {
   size?: 'sm' | 'md';
-  type: string;
+  type: PokemonTypes;
 };
 
 const darkcolors = ['fighting', 'poison', 'dark'];
@@ -16,7 +16,7 @@ const Type = styled.span<TypeProps>`
   justify-content: center;
   border-radius: 8px;
   font-weight: 500;
-  background: ${({ theme, type }) => theme.pokemonTypes[type as PokemonTypes]};
+  background: ${({ theme, type }) => theme.pokemonTypes[type]};
   color: ${({ type }) => (darkcolors.includes(type) ? '#f5f5f5' : '#0a0a0a')};
   transition: all 0.2s;
   font-size: ${theme.fontSizes.xsmall};

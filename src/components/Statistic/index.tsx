@@ -1,10 +1,11 @@
-import { StatKeys } from '../../@types/pokemon';
 import * as S from './styles';
 
 type StatisticProps = {
   percentage: number;
   label: StatKeys;
 };
+
+export type StatKeys = keyof typeof StatNames;
 
 export enum StatNames {
   hp = 'HP',

@@ -1,16 +1,41 @@
 import Image from 'next/image';
-import PokemonProps from '../../@types/pokemon';
+import { StatKeys } from 'components/Statistic';
 import { useModal } from '../../hooks/useModal';
 import translateType from '../../utils/translateType';
 
 import Button from '../Button';
 import FavoriteButton from '../FavoriteButton';
 import Heading from '../Heading/styles';
-import Type from '../Type/styles';
+import Type, { PokemonTypes } from '../Type/styles';
 
 import * as C from './styles';
 
-const Card = (pokemon: PokemonProps) => {
+export type CardProps = {
+  id: number;
+  name: string;
+  sprites: {
+    front_default: string;
+    back_default: string;
+  };
+  types: {
+    type: {
+      name: PokemonTypes;
+      url: string;
+    };
+  }[];
+  stats: {
+    base_stat: number;
+    effort: number;
+    stat: {
+      name: StatKeys;
+      url: string;
+    };
+  }[];
+  weight: number;
+  height: number;
+};
+
+const Card = (pokemon: CardProps) => {
   const { onOpen } = useModal();
 
   const variants = {

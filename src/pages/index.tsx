@@ -1,28 +1,7 @@
-import Wrapper from '../components/Wrapper/styles';
-import Heading from '../components/Heading/styles';
-import Button from '../components/Button';
-import Link from '../components/Link';
+import Home from 'templates/Home';
 
-import * as L from '../styles/pages/login';
+const Index = () => {
+  return <Home />;
+};
 
-export default function Login() {
-  return (
-    <L.Container>
-      <Wrapper maxWidth={120}>
-        <L.Content>
-          <header>
-            <img src="logo.svg" alt="Pokémon" />
-          </header>
-          <Heading level={1} fontSize="xlarge">
-            Comece a coletar <br />
-            pokémons!
-          </Heading>
-
-          <Link href="/dashboard/favorites">
-            <Button type="submit">Entrar</Button>
-          </Link>
-        </L.Content>
-      </Wrapper>
-    </L.Container>
-  );
-}
+export default Index;
