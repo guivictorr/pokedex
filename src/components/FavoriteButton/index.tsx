@@ -6,7 +6,7 @@ import { CardProps } from 'components/Card';
 
 const FavoriteButton = (pokemon: CardProps) => {
   const { checkIsFavorite, addFavorite } = useFavorites();
-  const [isFavorite, setIsFavorite] = useState(checkIsFavorite(pokemon));
+  const [isFavorite, setIsFavorite] = useState(checkIsFavorite(pokemon.id));
 
   const addFavoritePokemon = () => {
     addFavorite(pokemon);
@@ -16,8 +16,8 @@ const FavoriteButton = (pokemon: CardProps) => {
   return (
     <F.Container whileTap={{ scale: 0.5 }} onClick={addFavoritePokemon}>
       <img
-        src={checkIsFavorite(pokemon) ? '/heart.svg' : '/heart-outline.svg'}
-        alt={checkIsFavorite(pokemon) ? 'Remover de favoritos' : 'Favoritar'}
+        src={checkIsFavorite(pokemon.id) ? '/heart.svg' : '/heart-outline.svg'}
+        alt={checkIsFavorite(pokemon.id) ? 'Remover de favoritos' : 'Favoritar'}
       />
     </F.Container>
   );

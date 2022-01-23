@@ -83,10 +83,10 @@ const Modal = () => {
 
         <footer>
           <Button
-            variant={checkIsFavorite(payload) ? 'danger' : 'default'}
+            variant={checkIsFavorite(payload.id) ? 'danger' : 'default'}
             onClick={() => addFavorite(payload)}
           >
-            {checkIsFavorite(payload)
+            {checkIsFavorite(payload.id)
               ? 'Remover dos favoritos'
               : 'Adicionar aos favoritos'}
           </Button>

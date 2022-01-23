@@ -7,7 +7,7 @@ type FavoritesProviderProps = {
 
 type FavoritesContextProps = {
   addFavorite(pokemon: CardProps): void;
-  checkIsFavorite(pokemon: CardProps): boolean;
+  checkIsFavorite(pokemonId: number): boolean;
   checkIsEmpty(): boolean;
   favorites: CardProps[];
 };
@@ -18,7 +18,7 @@ const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
   const [favorites, setIsFavorites] = useState<CardProps[]>([]);
 
   const addFavorite = (pokemon: CardProps) => {
-    if (!checkIsFavorite(pokemon)) {
+    if (!checkIsFavorite(pokemon.id)) {
       setIsFavorites([...favorites, pokemon]);
     } else {
       const index = favorites.findIndex(favorite => favorite.id === pokemon.id);
@@ -27,8 +27,8 @@ const FavoritesProvider = ({ children }: FavoritesProviderProps) => {
     }
   };
 
-  const checkIsFavorite = (pokemon: CardProps) => {
-    return favorites.some(favorite => favorite.id === pokemon.id);
+  const checkIsFavorite = (pokemonId: number) => {
+    return favorites.some(favorite => favorite.id === pokemonId);
   };
 
   const checkIsEmpty = () => {
