@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 import * as F from './styles';
-import PokemonProps from '../../@types/pokemon';
 import { useFavorites } from '../../hooks/useFavorites';
+import { CardProps } from 'components/Card';
 
-const FavoriteButton = (pokemon: PokemonProps) => {
+const FavoriteButton = (pokemon: CardProps) => {
   const { checkIsFavorite, addFavorite } = useFavorites();
   const [isFavorite, setIsFavorite] = useState(checkIsFavorite(pokemon));
 
