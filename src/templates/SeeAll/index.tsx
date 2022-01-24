@@ -23,7 +23,7 @@ export type PokemonsByLimit = {
 const SeeAll = () => {
   const [offset, setOffset] = useState(0);
   const [pokemons, setPokemons] = useState<CardProps[]>([]);
-  const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`;
+  const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=30`;
   const { result } = useFetch<PokemonsByLimit>(url);
   const listBottom = useRef<HTMLLIElement>(null);
 
@@ -56,7 +56,7 @@ const SeeAll = () => {
 
       const intersectionObserver = new IntersectionObserver(entries => {
         if (entries.some(entry => entry.isIntersecting)) {
-          setOffset(prevState => prevState + 20);
+          setOffset(prevState => prevState + 30);
         }
       });
 
