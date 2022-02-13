@@ -17,7 +17,7 @@ export const ScrollButton = styled(Button)<ScrollButtonProps>`
   box-shadow: 0px 2px 16px rgb(0 0 0 / 10%);
 
   transition: all 0.2s ease-in-out;
-  transform: ${({ scrollY }) => (scrollY === 0 ? 'scale(0)' : 'scale(1)')};
+  transform: ${({ scrollY }) => (scrollY <= 10 ? 'scale(0)' : 'scale(1)')};
 
   @media (max-width: 768px) {
     bottom: 75px;
