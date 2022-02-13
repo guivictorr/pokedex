@@ -1,4 +1,4 @@
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 import { Fragment, ReactNode } from 'react';
 import { useModal } from '../../hooks/useModal';
 import Header from '../Header';
@@ -12,12 +12,14 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   const { isOpen } = useModal();
   return (
-    <Fragment>
-      <Header />
-      {children}
-      <ScrollToTop />
-      <AnimatePresence>{isOpen && <Modal />}</AnimatePresence>
-    </Fragment>
+    <AnimateSharedLayout type="crossfade">
+      <Fragment>
+        <Header />
+        {children}
+        <ScrollToTop />
+        <AnimatePresence>{isOpen && <Modal />}</AnimatePresence>
+      </Fragment>
+    </AnimateSharedLayout>
   );
 };
 
