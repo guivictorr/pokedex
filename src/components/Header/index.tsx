@@ -16,7 +16,7 @@ enum Pathnames {
 const Header = () => {
   const { pathname } = useRouter();
   const { favorites, checkIsEmpty } = useFavorites();
-  const isMobile = useMediaQuery('(max-width: 500px)');
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
     <H.Container>

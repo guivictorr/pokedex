@@ -69,7 +69,7 @@ const SeeAll = () => {
             loader={<Loading />}
             scrollThreshold={0.9}
           >
-            <Grid max="200px">
+            <Grid min="200px">
               {pokemons.map(pokemon => (
                 <Card key={pokemon.id} {...pokemon} />
               ))}

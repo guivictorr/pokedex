@@ -6,7 +6,7 @@ export const Container = styled.header`
   height: 50px;
   background-color: ${({ theme }) => theme.colors.primary};
 
-  @media (max-width: 500px) {
+  @media (max-width: 768px) {
     position: fixed;
     bottom: 0;
     z-index: 1;
@@ -21,7 +21,7 @@ export const Content = styled.div`
   width: 100%;
   margin: 0 auto;
 
-  @media (max-width: 500px) {
+  @media (max-width: 768px) {
     justify-content: center;
     img {
       display: none;
