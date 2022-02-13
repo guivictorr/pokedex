@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import useFetch from 'hooks/useFetch';
 import fetchJson from 'utils/fetchJson';
@@ -25,7 +26,6 @@ const SeeAll = () => {
   const [pokemons, setPokemons] = useState<CardProps[]>([]);
   const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=30`;
   const { result } = useFetch<PokemonsByLimit>(url);
-  const listBottom = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
     const promises: Promise<CardProps>[] = [];
@@ -50,21 +50,9 @@ const SeeAll = () => {
     Promise.allSettled(promises).then(handleSettledPromises);
   }, [result]);
 
-  useEffect(() => {
-    setTimeout(() => {
-      if (!listBottom.current) return;
-
-      const intersectionObserver = new IntersectionObserver(entries => {
-        if (entries.some(entry => entry.isIntersecting)) {
-          setOffset(prevState => prevState + 30);
-        }
-      });
-
-      intersectionObserver.observe(listBottom.current);
-
-      return () => intersectionObserver.disconnect();
-    }, 1500);
-  }, []);
+  const getMorePokemons = () => {
+    setOffset(prevState => prevState + 30);
+  };
 
   return (
     <Layout>
@@ -74,12 +62,19 @@ const SeeAll = () => {
             <Loading />
           </S.Content>
         ) : (
-          <Grid min="200px">
-            {pokemons.map(pokemon => (
-              <Card key={pokemon.id} {...pokemon} />
-            ))}
-            <S.ListBottom ref={listBottom} />
-          </Grid>
+          <InfiniteScroll
+            dataLength={pokemons.length}
+            hasMore={!!result?.next}
+            next={getMorePokemons}
+            loader={<Loading />}
+            scrollThreshold={0.9}
+          >
+            <Grid max="200px">
+              {pokemons.map(pokemon => (
+                <Card key={pokemon.id} {...pokemon} />
+              ))}
+            </Grid>
+          </InfiniteScroll>
         )}
       </S.Container>
     </Layout>
