@@ -8,7 +8,7 @@ import FavoriteButton from '../FavoriteButton';
 import Heading from '../Heading/styles';
 import Type, { PokemonTypes } from '../Type/styles';
 
-import * as C from './styles';
+import * as S from './styles';
 
 export type CardProps = {
   id: number;
@@ -54,7 +54,7 @@ const Card = (pokemon: CardProps) => {
   };
 
   return (
-    <C.Container
+    <S.Container
       variants={variants}
       transition={{ damping: 0 }}
       layout
@@ -63,30 +63,32 @@ const Card = (pokemon: CardProps) => {
       animate="open"
       exit="exit"
     >
-      <C.Content>
-        <Image
-          width={120}
-          height={120}
-          src={pokemon.sprites.front_default}
-          alt={pokemon.name}
-        />
+      <S.Content>
+        <S.ImageWrapper>
+          <Image
+            width={120}
+            height={120}
+            src={pokemon.sprites.front_default}
+            alt={pokemon.name}
+          />
+        </S.ImageWrapper>
         <Heading level={1} fontWeight={600} fontSize="large">
           {pokemon.name}
         </Heading>
         <Heading level={2} fontWeight={500} fontSize="medium" color="grey200">
           ID: {pokemon.id}
         </Heading>
-        <C.Row>
+        <S.Row>
           {pokemon.types.map(({ type }) => (
             <Type key={type.name} type={type.name}>
               {translateType(type.name)}
             </Type>
           ))}
-        </C.Row>
+        </S.Row>
         <Button onClick={() => onOpen(pokemon)}>Ver detalhes</Button>
         <FavoriteButton {...pokemon} />
-      </C.Content>
-    </C.Container>
+      </S.Content>
+    </S.Container>
   );
 };
 

@@ -16,16 +16,19 @@ export const Container = styled(motion.div)`
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
+export const ImageWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
+
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
   position: relative;
-
-  & > div:nth-child(1) {
-    align-self: center;
-  }
 
   button {
     height: 32px;
