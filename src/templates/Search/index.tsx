@@ -14,7 +14,7 @@ const Search = () => {
   const [inputText, setInputText] = useState<string>('');
   const debouncedValue = useDebounce(inputText);
   const url = `https://pokeapi.co/api/v2/pokemon/${debouncedValue}`;
-  const { result } = useFetch<CardProps>(url);
+  const { data } = useFetch<CardProps>(url);
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
     const pokeName = event.target.value.toLowerCase().trim();
@@ -26,7 +26,7 @@ const Search = () => {
       <S.Container>
         <Input placeholder="Procure pelo nome..." onChange={handleInput} />
         <Grid min="250px">
-          {result && !('count' in result) && <Card {...result} />}
+          {data && !('count' in data) && <Card {...data} />}
         </Grid>
       </S.Container>
     </Layout>

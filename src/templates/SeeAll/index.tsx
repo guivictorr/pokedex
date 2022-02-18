@@ -25,13 +25,13 @@ const SeeAll = () => {
   const [offset, setOffset] = useState(0);
   const [pokemons, setPokemons] = useState<CardProps[]>([]);
   const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=30`;
-  const { result } = useFetch<PokemonsByLimit>(url);
+  const { data } = useFetch<PokemonsByLimit>(url);
 
   useEffect(() => {
     const promises: Promise<CardProps>[] = [];
 
-    if (result) {
-      result.results.forEach(pokemon => {
+    if (data) {
+      data.results.forEach(pokemon => {
         const promise = fetchJson<CardProps>(pokemon.url);
         promises.push(promise);
       });
@@ -48,7 +48,7 @@ const SeeAll = () => {
     };
 
     Promise.allSettled(promises).then(handleSettledPromises);
-  }, [result]);
+  }, [data]);
 
   const getMorePokemons = () => {
     setOffset(prevState => prevState + 30);
@@ -57,25 +57,19 @@ const SeeAll = () => {
   return (
     <Layout>
       <S.Container>
-        {!pokemons.length ? (
-          <S.Content>
-            <Loading />
-          </S.Content>
-        ) : (
-          <InfiniteScroll
-            dataLength={pokemons.length}
-            hasMore={!!result?.next}
-            next={getMorePokemons}
-            loader={<Loading />}
-            scrollThreshold={0.9}
-          >
-            <Grid min="200px">
-              {pokemons.map(pokemon => (
-                <Card key={pokemon.id} {...pokemon} />
-              ))}
-            </Grid>
-          </InfiniteScroll>
-        )}
+        <InfiniteScroll
+          dataLength={pokemons.length}
+          hasMore={!!data?.next}
+          next={getMorePokemons}
+          loader={<Loading />}
+          scrollThreshold={0.9}
+        >
+          <Grid min="200px">
+            {pokemons.map(pokemon => (
+              <Card key={pokemon.id} {...pokemon} />
+            ))}
+          </Grid>
+        </InfiniteScroll>
       </S.Container>
     </Layout>
   );
