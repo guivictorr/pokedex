@@ -5,6 +5,10 @@
   <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/guivictorr/pokedex/Build?color=%23FFCB05&style=for-the-badge">
 </div>
 
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/55333929/159387257-b7ce3d51-049d-45d3-9527-73512ee12a1d.png">
+</div>
+
 ## 🛠 Tecnologias
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
