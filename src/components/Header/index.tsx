@@ -8,9 +8,9 @@ import Link from '../Link';
 import * as H from './styles';
 
 enum Pathnames {
-  'favorites' = '/dashboard/favorites',
+  'favorites' = '/',
   'search' = '/dashboard/search',
-  'seeAll' = '/dashboard/seeAll',
+  'see-all' = '/dashboard/see-all',
 }
 
 const Header = () => {
@@ -36,13 +36,13 @@ const Header = () => {
               {checkIsEmpty() || <span>{favorites.length}</span>}
             </label>
           </Link>
-          <Link href={Pathnames.seeAll}>
+          <Link href={Pathnames['see-all']}>
             <input
               type="radio"
               name="navigation"
               id="see-all"
               hidden
-              defaultChecked={pathname === Pathnames.seeAll}
+              defaultChecked={pathname === Pathnames['see-all']}
             />
             <label htmlFor="see-all">
               {isMobile ? <FiList size={25} /> : 'Ver todos'}

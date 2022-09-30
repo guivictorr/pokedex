@@ -1,7 +1,7 @@
-import Home from 'templates/Home';
+import Favorites from 'templates/Favorites';
 
 const Index = () => {
-  return <Home />;
+  return <Favorites />;
 };
 
 export default Index;
