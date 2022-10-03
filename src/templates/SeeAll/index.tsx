@@ -68,12 +68,12 @@ const SeeAll = () => {
                 placeholder="Procure pelo o nome do pokemon"
                 disabled={!data?.results.length}
               /> */}
-              <Pagination
+              {/* <Pagination
                 total={200}
                 currentPage={5}
                 perPage={15}
                 onPageChange={() => console.log('cu')}
-              />
+              /> */}
             </div>
             <Grid min="200px">
               {pokemons.map(pokemon => (
