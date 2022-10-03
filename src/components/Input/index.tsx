@@ -40,4 +40,3 @@ const Input = ({ isPassword = false, ...rest }: InputProps) => {
 };
 
 export default Input;
-

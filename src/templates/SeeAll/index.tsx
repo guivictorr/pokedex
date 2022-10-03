@@ -9,8 +9,6 @@ import Layout from 'components/Layout';
 import Loading from 'components/Loading';
 
 import * as S from './styles';
-import Input from 'components/Input';
-import { Pagination } from 'components/Pagination';
 
 export type PokemonsByLimit = {
   count: number;

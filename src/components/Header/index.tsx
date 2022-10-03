@@ -1,4 +1,4 @@
-import { FiHeart, FiList, FiSearch } from 'react-icons/fi';
+import { FiHeart, FiList } from 'react-icons/fi';
 import { useRouter } from 'next/router';
 import { useFavorites } from '../../hooks/useFavorites';
 import useMediaQuery from '../../hooks/useMediaQuery';
