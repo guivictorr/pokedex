@@ -94,14 +94,14 @@ exports[`<Empty/> should render correctly 1`] = `
   </span>
   <h2
     class="c1"
-    color="grey500"
+    color="gray500"
     font-size="large"
     font-weight="600"
   >
     Está meio vazio por aqui!
   </h2>
   <p>
-    Procure por pokémons para adicioná-los aos seus 
+    Procure por pokémons para adicioná-los aos seus
     <br />
      favoritos.
   </p>

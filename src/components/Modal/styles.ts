@@ -17,7 +17,7 @@ export const Row = styled.div`
   align-items: center;
 
   figure {
-    background-color: ${({ theme }) => theme.colors.grey200};
+    background-color: ${({ theme }) => theme.colors.gray200};
     border-radius: 8px;
 
     & + figure {
@@ -64,7 +64,7 @@ export const Content = styled(motion.div)`
 
   hr {
     margin-top: 9px;
-    border: 1px solid ${({ theme }) => theme.colors.grey200};
+    border: 1px solid ${({ theme }) => theme.colors.gray200};
   }
 
   section {

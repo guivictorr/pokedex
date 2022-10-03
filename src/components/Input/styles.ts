@@ -5,7 +5,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  border: 1px solid ${({ theme }) => theme.colors.grey200};
+  border: 1px solid ${({ theme }) => theme.colors.gray200};
   border-radius: 8px;
   padding: 18px 26px;
   background: ${({ theme }) => theme.colors.white};
@@ -15,7 +15,7 @@ export const Container = styled.div`
     flex: 1;
     border: none;
     outline: none;
-    color: ${({ theme }) => theme.colors.grey300};
+    color: ${({ theme }) => theme.colors.gray300};
     font-size: ${({ theme }) => theme.fontSizes.small};
   }
 

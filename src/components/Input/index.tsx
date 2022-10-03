@@ -23,14 +23,14 @@ const Input = ({ isPassword = false, ...rest }: InputProps) => {
         (showPassword ? (
           <FaEyeSlash
             size={16}
-            color={theme.colors.grey300}
+            color={theme.colors.gray300}
             onClick={() => setShowPassword(!showPassword)}
             className="icon-click"
           />
         ) : (
           <FaEye
             size={16}
-            color={theme.colors.grey300}
+            color={theme.colors.gray300}
             onClick={() => setShowPassword(!showPassword)}
             className="icon-click"
           />
@@ -40,3 +40,4 @@ const Input = ({ isPassword = false, ...rest }: InputProps) => {
 };
 
 export default Input;
+

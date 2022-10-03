@@ -75,7 +75,7 @@ const Card = (pokemon: CardProps) => {
         <Heading level={1} fontWeight={600} fontSize="large">
           {pokemon.name}
         </Heading>
-        <Heading level={2} fontWeight={500} fontSize="medium" color="grey200">
+        <Heading level={2} fontWeight={500} fontSize="medium" color="gray200">
           ID: {pokemon.id}
         </Heading>
         <S.Row>

@@ -24,7 +24,7 @@ export const ProgressBar = styled.div`
   width: 100%;
   max-width: 250px;
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.grey200};
+  background-color: ${({ theme }) => theme.colors.gray200};
 `;
 
 export const Filler = styled(motion.div)<FillerProps>`

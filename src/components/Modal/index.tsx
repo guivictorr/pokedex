@@ -68,7 +68,7 @@ const Modal = () => {
             ))}
           </M.Row>
           <M.Stats>
-            <Heading level={2} fontSize="medium" color="grey300">
+            <Heading level={2} fontSize="medium" color="gray300">
               Estatísticas
             </Heading>
             {payload.stats.map(({ base_stat, stat }) => (

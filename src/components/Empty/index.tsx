@@ -15,7 +15,7 @@ const Empty = () => {
         src="/empty.svg"
         alt="Astronauta em um espaço vazio"
       />
-      <Heading level={2} fontWeight={600} fontSize="large" color="grey500">
+      <Heading level={2} fontWeight={600} fontSize="large" color="gray500">
         Está meio vazio por aqui!
       </Heading>
       <p>

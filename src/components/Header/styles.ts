@@ -55,7 +55,7 @@ export const Content = styled.div`
       justify-content: center;
       width: 100px;
       cursor: pointer;
-      color: ${({ theme }) => theme.colors.grey500};
+      color: ${({ theme }) => theme.colors.gray500};
       font-size: ${({ theme }) => theme.fontSizes.medium};
       height: 100%;
     }
@@ -66,7 +66,7 @@ export const Content = styled.div`
 
       &::before {
         content: '';
-        background: ${({ theme }) => theme.colors.grey500};
+        background: ${({ theme }) => theme.colors.gray500};
         width: 100%;
         height: 3px;
         position: absolute;
@@ -80,7 +80,7 @@ export const Content = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid ${({ theme }) => theme.colors.grey400};
+    border: 1px solid ${({ theme }) => theme.colors.gray400};
     border-radius: 8px;
     background: transparent;
     cursor: pointer;

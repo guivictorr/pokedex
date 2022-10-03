@@ -8,7 +8,7 @@ type GridProps = {
 };
 
 const Grid = styled(motion.section)<GridProps>`
-  margin: 50px 0;
+  margin: 25px 0;
   display: grid;
   gap: 35px;
   width: 100%;
