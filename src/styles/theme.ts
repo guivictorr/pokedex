@@ -6,11 +6,11 @@ export default {
     background: '#f5f7fa',
     success: '#45b572',
     warning: '#f9aa35',
-    grey500: '#1e1e1f',
-    grey400: '#4b4b4d',
-    grey300: '#7d7e80',
-    grey200: '#d2d4d6',
-    grey100: '#f5f7fa',
+    gray500: '#1e1e1f',
+    gray400: '#4b4b4d',
+    gray300: '#7d7e80',
+    gray200: '#d2d4d6',
+    gray100: '#f5f7fa',
     white: '#fff',
   },
   pokemonTypes: {
@@ -42,4 +42,4 @@ export default {
     xsmall: '12px',
     xxsmall: '8px',
   },
-};
+} as const;

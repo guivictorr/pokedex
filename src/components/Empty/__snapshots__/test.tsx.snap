@@ -94,7 +94,7 @@ exports[`<Empty/> should render correctly 1`] = `
   </span>
   <h2
     class="c1"
-    color="grey500"
+    color="gray500"
     font-size="large"
     font-weight="600"
   >

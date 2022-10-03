@@ -10,8 +10,8 @@ type ButtonStyle = {
 const variants = {
   outlined: css`
     background-color: transparent;
-    border: 1px solid ${theme.colors.grey300};
-    color: ${theme.colors.grey300};
+    border: 1px solid ${theme.colors.gray300};
+    color: ${theme.colors.gray300};
   `,
   danger: css`
     background-color: ${theme.colors.danger};
@@ -19,7 +19,7 @@ const variants = {
   `,
   default: css`
     background: ${theme.colors.primary};
-    color: ${theme.colors.grey500};
+    color: ${theme.colors.gray500};
   `,
 };
 

@@ -10,7 +10,7 @@ export const Container = styled.section`
 
   p {
     ${({ theme }) => css`
-      color: ${theme.colors.grey300};
+      color: ${theme.colors.gray300};
       margin-top: 10px;
     `}
   }

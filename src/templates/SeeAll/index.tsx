@@ -9,7 +9,6 @@ import Layout from 'components/Layout';
 import Loading from 'components/Loading';
 
 import * as S from './styles';
-import Input from 'components/Input';
 
 export type PokemonsByLimit = {
   count: number;
@@ -21,7 +20,7 @@ export type PokemonsByLimit = {
   }[];
 };
 
-const url = 'https://pokeapi.co/api/v2/pokemon?limit=150';
+const url = 'https://pokeapi.co/api/v2/pokemon?limit=15';
 
 const SeeAll = () => {
   const [pokemons, setPokemons] = useState<CardProps[]>([]);
@@ -62,10 +61,18 @@ const SeeAll = () => {
 
         {!isLoading && (
           <>
-            <Input
-              placeholder="Procure pelo o nome do pokemon"
-              disabled={!data?.results.length}
-            />
+            <div style={{ display: 'flex', gap: 36 }}>
+              {/* <Input
+                placeholder="Procure pelo o nome do pokemon"
+                disabled={!data?.results.length}
+              /> */}
+              {/* <Pagination
+                total={200}
+                currentPage={5}
+                perPage={15}
+                onPageChange={() => console.log('cu')}
+              /> */}
+            </div>
             <Grid min="200px">
               {pokemons.map(pokemon => (
                 <Card key={pokemon.id} {...pokemon} />

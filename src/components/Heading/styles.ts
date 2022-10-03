@@ -11,7 +11,7 @@ export type HeadingProps = {
 const Heading = styled('h1').attrs<HeadingProps>(({ level }) => ({
   as: `h${level}`,
 }))<HeadingProps>`
-  ${({ color = 'grey500', fontWeight = 700, fontSize = 'medium' }) => css`
+  ${({ color = 'gray500', fontWeight = 700, fontSize = 'medium' }) => css`
     color: ${theme.colors[color]};
     font-weight: ${fontWeight};
     font-size: ${theme.fontSizes[fontSize]};
