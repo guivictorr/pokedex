@@ -101,7 +101,7 @@ exports[`<Empty/> should render correctly 1`] = `
     Está meio vazio por aqui!
   </h2>
   <p>
-    Procure por pokémons para adicioná-los aos seus
+    Procure por pokémons para adicioná-los aos seus 
     <br />
      favoritos.
   </p>
