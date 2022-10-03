@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 import useFetch from 'hooks/useFetch';
 import fetchJson from 'utils/fetchJson';
@@ -10,6 +9,7 @@ import Layout from 'components/Layout';
 import Loading from 'components/Loading';
 
 import * as S from './styles';
+import Input from 'components/Input';
 
 export type PokemonsByLimit = {
   count: number;
@@ -21,11 +21,12 @@ export type PokemonsByLimit = {
   }[];
 };
 
+const url = 'https://pokeapi.co/api/v2/pokemon?limit=150';
+
 const SeeAll = () => {
-  const [offset, setOffset] = useState(0);
   const [pokemons, setPokemons] = useState<CardProps[]>([]);
-  const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=30`;
   const { data } = useFetch<PokemonsByLimit>(url);
+  const isLoading = !pokemons.length;
 
   useEffect(() => {
     const promises: Promise<CardProps>[] = [];
@@ -50,26 +51,28 @@ const SeeAll = () => {
     Promise.allSettled(promises).then(handleSettledPromises);
   }, [data]);
 
-  const getMorePokemons = () => {
-    setOffset(prevState => prevState + 30);
-  };
-
   return (
     <Layout>
       <S.Container>
-        <InfiniteScroll
-          dataLength={pokemons.length}
-          hasMore={!!data?.next}
-          next={getMorePokemons}
-          loader={<Loading />}
-          scrollThreshold={0.9}
-        >
-          <Grid min="200px">
-            {pokemons.map(pokemon => (
-              <Card key={pokemon.id} {...pokemon} />
-            ))}
-          </Grid>
-        </InfiniteScroll>
+        {isLoading && (
+          <div style={{ height: '90vh' }}>
+            <Loading />
+          </div>
+        )}
+
+        {!isLoading && (
+          <>
+            <Input
+              placeholder="Procure pelo o nome do pokemon"
+              disabled={!data?.results.length}
+            />
+            <Grid min="200px">
+              {pokemons.map(pokemon => (
+                <Card key={pokemon.id} {...pokemon} />
+              ))}
+            </Grid>
+          </>
+        )}
       </S.Container>
     </Layout>
   );

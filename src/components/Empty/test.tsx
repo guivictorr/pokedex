@@ -13,12 +13,12 @@ describe('<Empty/>', () => {
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('should have a link to search page', () => {
+  it('should have a link to see all page', () => {
     customRender(<Empty />);
 
     expect(screen.getByRole('link')).toHaveAttribute(
       'href',
-      '/dashboard/search',
+      '/dashboard/see-all',
     );
   });
 });
