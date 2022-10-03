@@ -48,18 +48,6 @@ const Header = () => {
               {isMobile ? <FiList size={25} /> : 'Ver todos'}
             </label>
           </Link>
-          <Link href={Pathnames.search}>
-            <input
-              type="radio"
-              name="navigation"
-              id="search"
-              hidden
-              defaultChecked={pathname === Pathnames.search}
-            />
-            <label htmlFor="search">
-              {isMobile ? <FiSearch size={25} /> : 'Procurar'}
-            </label>
-          </Link>
         </nav>
       </H.Content>
     </H.Container>

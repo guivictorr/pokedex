@@ -18,4 +18,9 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.colors.grey300};
     font-size: ${({ theme }) => theme.fontSizes.small};
   }
+
+  input:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
 `;
