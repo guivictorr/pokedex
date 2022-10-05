@@ -47,7 +47,7 @@ export const Pagination = ({
         </>
       )}
 
-      {previousPages.length &&
+      {!!previousPages.length &&
         previousPages.map(page => (
           <PaginationItem
             onPageChange={onPageChange}
@@ -62,7 +62,7 @@ export const Pagination = ({
         isCurrent
       />
 
-      {nextPages.length &&
+      {!!nextPages.length &&
         nextPages.map(page => (
           <PaginationItem
             onPageChange={onPageChange}
