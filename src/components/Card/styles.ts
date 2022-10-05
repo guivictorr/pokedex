@@ -29,6 +29,7 @@ export const Content = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   position: relative;
+  height: 100%;
 
   button {
     height: 32px;
