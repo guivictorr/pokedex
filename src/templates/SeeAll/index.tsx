@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import useFetch from 'hooks/useFetch';
 import fetchJson from 'utils/fetchJson';
 
 import Card, { CardProps } from 'components/Card';
