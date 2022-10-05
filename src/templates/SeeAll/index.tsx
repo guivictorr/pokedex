@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import useFetch from 'hooks/useFetch';
 import fetchJson from 'utils/fetchJson';
@@ -9,6 +9,7 @@ import Layout from 'components/Layout';
 import Loading from 'components/Loading';
 
 import * as S from './styles';
+import { Pagination } from 'components/Pagination';
 
 export type PokemonsByLimit = {
   count: number;
@@ -20,35 +21,29 @@ export type PokemonsByLimit = {
   }[];
 };
 
-const url = 'https://pokeapi.co/api/v2/pokemon?limit=15';
+const limit = 14;
+const url = `https://pokeapi.co/api/v2/pokemon?limit=${limit}`;
+const totalCount = 1000;
 
 const SeeAll = () => {
+  const [currentPage, setCurrentPage] = useState(1);
   const [pokemons, setPokemons] = useState<CardProps[]>([]);
-  const { data } = useFetch<PokemonsByLimit>(url);
   const isLoading = !pokemons.length;
 
   useEffect(() => {
-    const promises: Promise<CardProps>[] = [];
+    setPokemons([]);
 
-    if (data) {
+    const pokemons = fetchJson<PokemonsByLimit>(
+      `${url}&offset=${currentPage * limit}`,
+    );
+
+    pokemons.then(data => {
       data.results.forEach(pokemon => {
         const promise = fetchJson<CardProps>(pokemon.url);
-        promises.push(promise);
+        promise.then(data => setPokemons(prevState => [...prevState, data]));
       });
-    }
-
-    const handleSettledPromises = (
-      pokemons: PromiseSettledResult<CardProps>[],
-    ) => {
-      pokemons.forEach(pokemon => {
-        if (pokemon.status === 'fulfilled') {
-          setPokemons(prevState => [...prevState, pokemon.value]);
-        }
-      });
-    };
-
-    Promise.allSettled(promises).then(handleSettledPromises);
-  }, [data]);
+    });
+  }, [currentPage]);
 
   return (
     <Layout>
@@ -63,15 +58,15 @@ const SeeAll = () => {
           <>
             <div style={{ display: 'flex', gap: 36 }}>
               {/* <Input
-                placeholder="Procure pelo o nome do pokemon"
-                disabled={!data?.results.length}
-              /> */}
-              {/* <Pagination
-                total={200}
-                currentPage={5}
+              placeholder="Procure pelo o nome do pokemon"
+              disabled={!data?.results.length}
+            /> */}
+              <Pagination
+                total={totalCount}
+                currentPage={currentPage}
                 perPage={15}
-                onPageChange={() => console.log('cu')}
-              /> */}
+                onPageChange={setCurrentPage}
+              />
             </div>
             <Grid min="200px">
               {pokemons.map(pokemon => (

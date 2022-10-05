@@ -64,14 +64,16 @@ const Card = (pokemon: CardProps) => {
       exit="exit"
     >
       <S.Content>
-        <S.ImageWrapper>
-          <Image
-            width={120}
-            height={120}
-            src={pokemon.sprites.front_default}
-            alt={pokemon.name}
-          />
-        </S.ImageWrapper>
+        {pokemon.sprites.front_default && (
+          <S.ImageWrapper>
+            <Image
+              width={120}
+              height={120}
+              src={pokemon.sprites.front_default || '/placeholder.png'}
+              alt={pokemon.name}
+            />
+          </S.ImageWrapper>
+        )}
         <Heading level={1} fontWeight={600} fontSize="large">
           {pokemon.name}
         </Heading>
